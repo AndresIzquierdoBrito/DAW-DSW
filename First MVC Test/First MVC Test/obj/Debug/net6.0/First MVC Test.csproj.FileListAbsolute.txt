@@ -1,0 +1,30 @@
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\bin\Debug\net6.0\appsettings.json
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\bin\Debug\net6.0\First MVC Test.staticwebassets.runtime.json
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\bin\Debug\net6.0\First MVC Test.exe
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\bin\Debug\net6.0\First MVC Test.deps.json
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\bin\Debug\net6.0\First MVC Test.runtimeconfig.json
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\bin\Debug\net6.0\First MVC Test.dll
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\bin\Debug\net6.0\First MVC Test.pdb
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\First MVC Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\First MVC Test.AssemblyInfoInputs.cache
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\First MVC Test.AssemblyInfo.cs
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\First MVC Test.csproj.CoreCompileInputs.cache
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\First MVC Test.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\First MVC Test.RazorAssemblyInfo.cache
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\First MVC Test.RazorAssemblyInfo.cs
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\staticwebassets\msbuild.First MVC Test.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\staticwebassets\msbuild.build.First MVC Test.props
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.First MVC Test.props
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.First MVC Test.props
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\scopedcss\bundle\First MVC Test.styles.css
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\scopedcss\projectbundle\First MVC Test.bundle.scp.css
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\First MVC Test.dll
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\refint\First MVC Test.dll
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\First MVC Test.pdb
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\First MVC Test.genruntimeconfig.cache
+C:\Users\2dawa\Desktop\DSW\First MVC Test\First MVC Test\obj\Debug\net6.0\ref\First MVC Test.dll
