@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using First_MVC_Test.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace First_MVC_Test.Controllers
 {
@@ -13,15 +14,43 @@ namespace First_MVC_Test.Controllers
             return View();
         }
 
-        public IActionResult Felicita(int id, string name, int age)
+        public IActionResult Perfil()
         {
-            ViewData["ID"] = id;
-            ViewData["name"] = name;
-            ViewData["age"] = age;
+            Person persona = new Person
+            {
+                Id = 1,
+                Name = "Andrew",
+                Age = 21,
+                Email = "andres.izbri@gmail.com"
+            };
 
-            return View();
+
+            return View(persona);
         }
-       
+
+        //public IActionResult Felicita(int id, string name, int age)
+        //{
+        //    ViewData["ID"] = id;
+        //    ViewData["name"] = name;
+        //    ViewData["age"] = age;
+
+        //    return View();
+        //}
+
+        public IActionResult Felicita()
+        {
+            Person persona = new Person
+            {
+                Id = 1,
+                Name = "Andrew",
+                Age = 21,
+                Email = "andres.izbri@gmail.com"
+            };
+
+
+            return View(persona);
+        }
+
 
         public string Greetings()
         {

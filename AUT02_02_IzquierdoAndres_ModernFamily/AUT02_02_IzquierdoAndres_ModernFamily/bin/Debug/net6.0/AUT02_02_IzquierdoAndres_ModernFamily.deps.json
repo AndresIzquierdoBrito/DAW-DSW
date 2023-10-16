@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "AUT02_02_IzquierdoAndres_ModernFamily/1.0.0": {
+        "runtime": {
+          "AUT02_02_IzquierdoAndres_ModernFamily.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AUT02_02_IzquierdoAndres_ModernFamily/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
