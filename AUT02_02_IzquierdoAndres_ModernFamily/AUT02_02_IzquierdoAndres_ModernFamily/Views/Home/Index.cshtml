@@ -2,7 +2,12 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="display-4 text-center">Bienvenido a la página sobre MODERN FAMILY y sus PERSONAJES</h1>
+<div>
+    <h3 class="display-4">Menú</h3>
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Crear personaje", "Create", "Personaje")</li>
+        <li>@Html.ActionLink("Lista de personajes", "Index", "Personaje")</li>
+    </ul>
 </div>
