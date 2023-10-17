@@ -9544,19 +9544,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\2dawa\\.nuget\\packages\\": {}
+    "C:\\Users\\Necro\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\2dawa\\Desktop\\DSW\\First MVC Test\\First MVC Test\\First MVC Test.csproj",
+      "projectUniqueName": "A:\\Necro's Files\\Desktop\\Repositores\\DAW-DSW\\First MVC Test\\First MVC Test\\First MVC Test.csproj",
       "projectName": "First MVC Test",
-      "projectPath": "C:\\Users\\2dawa\\Desktop\\DSW\\First MVC Test\\First MVC Test\\First MVC Test.csproj",
-      "packagesPath": "C:\\Users\\2dawa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\2dawa\\Desktop\\DSW\\First MVC Test\\First MVC Test\\obj\\",
+      "projectPath": "A:\\Necro's Files\\Desktop\\Repositores\\DAW-DSW\\First MVC Test\\First MVC Test\\First MVC Test.csproj",
+      "packagesPath": "C:\\Users\\Necro\\.nuget\\packages\\",
+      "outputPath": "A:\\Necro's Files\\Desktop\\Repositores\\DAW-DSW\\First MVC Test\\First MVC Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\2dawa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Necro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9564,6 +9564,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -9606,7 +9607,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
