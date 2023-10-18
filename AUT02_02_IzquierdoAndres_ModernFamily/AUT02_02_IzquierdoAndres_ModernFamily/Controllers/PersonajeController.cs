@@ -19,7 +19,7 @@ namespace AUT02_02_IzquierdoAndres_ModernFamily.Controllers
 
         public IActionResult Index() => View(characters);
 
-         [HttpGet]  //Se llama a este método en el caso que la página devuelva haga una petición POST
+         [HttpGet]  //Se llama a este método en el caso que la página devuelva haga una petición GET
         public IActionResult Create() => View();
 
         [HttpPost]  //Se llama a este método en el caso que la página devuelva haga una petición POST
@@ -28,14 +28,14 @@ namespace AUT02_02_IzquierdoAndres_ModernFamily.Controllers
         {
             if (ModelState.IsValid)
             {
-                character.Id = characters.Count > 0 ? characters[characters.Count - 1].Id + 1 : 1;
+                character.Id = characters.Count > 0 ? characters.Last().Id + 1 : 1;
                 characters.Add(character);
             }
 
             return RedirectToAction("LastCharacterDetail");
         }
 
-        public IActionResult Details(int id) => View(characters[id]);
+        public IActionResult Details(int id) => View(characters[id - 1]);
 
         public IActionResult LastCharacterDetail()
         {
