@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\IzquierdoAndres_Musica.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\2dawa\\Desktop\\DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica\\wwwroot\\css\\layout.css",
+      "PackagePath": "staticwebassets\\css\\layout.css"
+    },
+    {
       "Id": "C:\\Users\\2dawa\\Desktop\\DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lSWHaTbr1jfUP8RvHIQk7P/CbrigBJ+irnghQes6XQM=",
+  "Hash": "VyUufyghZd739AbXzjZagYicZOPqoCXb5ZY/nQSiJKM=",
   "Source": "IzquierdoAndres_Musica",
   "BasePath": "_content/IzquierdoAndres_Musica",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\2dawa\\Desktop\\DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\IzquierdoAndres_Musica.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\2dawa\\Desktop\\DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica\\wwwroot\\css\\layout.css",
+      "SourceId": "IzquierdoAndres_Musica",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\2dawa\\Desktop\\DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica\\wwwroot\\",
+      "BasePath": "_content/IzquierdoAndres_Musica",
+      "RelativePath": "css/layout.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\layout.css"
     },
     {
       "Identity": "C:\\Users\\2dawa\\Desktop\\DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica\\wwwroot\\css\\site.css",

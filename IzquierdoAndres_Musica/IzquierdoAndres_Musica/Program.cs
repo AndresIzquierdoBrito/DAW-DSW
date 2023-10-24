@@ -1,7 +1,16 @@
+using IzquierdoAndres_Musica.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
+
+var connectionString = builder.Configuration.GetConnectionString("ChinookContext");
+builder.Services.AddDbContext<ChinookContext>(options => options.UseSqlServer(connectionString));
+
 
 var app = builder.Build();
 
