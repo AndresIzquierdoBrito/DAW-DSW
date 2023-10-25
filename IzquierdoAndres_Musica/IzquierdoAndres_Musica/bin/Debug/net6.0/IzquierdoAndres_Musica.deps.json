@@ -8,8 +8,6 @@
     ".NETCoreApp,Version=v6.0": {
       "IzquierdoAndres_Musica/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.12",
-          "Microsoft.EntityFrameworkCore.Design": "7.0.12",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.12",
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.23",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.12",

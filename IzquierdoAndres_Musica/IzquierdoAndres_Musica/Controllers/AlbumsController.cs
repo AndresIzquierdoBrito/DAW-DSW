@@ -48,24 +48,24 @@ namespace IzquierdoAndres_Musica.Controllers
         // GET: Albums/Create
         public IActionResult Create()
         {
-            ViewData["ArtistId"] = new SelectList(_context.Artists, "ArtistId", "ArtistId");
+            ViewData["a"] = new SelectList(_context.Artists, "ArtistId", "Name");
             return View();
         }
 
         // POST: Albums/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AlbumId,Title,ArtistId")] Album album)
+        public async Task<IActionResult> Create([Bind("Title,ArtistId")] Album album)
         {
+            album.AlbumId = _context.Albums.Max(a => a.AlbumId) + 1;
             if (ModelState.IsValid)
             {
                 _context.Add(album);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArtistId"] = new SelectList(_context.Artists, "ArtistId", "ArtistId", album.ArtistId);
+            ViewData["Artist"] = new SelectList(_context.Artists, "ArtistId", "Name");
             return View(album);
         }
 
@@ -82,7 +82,7 @@ namespace IzquierdoAndres_Musica.Controllers
             {
                 return NotFound();
             }
-            ViewData["ArtistId"] = new SelectList(_context.Artists, "ArtistId", "ArtistId", album.ArtistId);
+            ViewData["Artist"] = new SelectList(_context.Artists, "Name");
             return View(album);
         }
 
