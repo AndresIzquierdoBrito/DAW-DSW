@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<IzquierdoAndres_Musica.Models.Artist>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Artistas";
 }
 
-<h1>Index</h1>
+<h1>Lista de artistas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear nuevo artista</a>
 </p>
 <table class="table">
     <thead>
@@ -25,9 +25,10 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ArtistId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ArtistId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ArtistId">Delete</a>
+                <a asp-controller="Albums" asp-action="Show" asp-route-id="@item.ArtistId">Álbumes</a> |
+                <a asp-action="Edit" asp-route-id="@item.ArtistId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ArtistId">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.ArtistId">Eliminar</a>
             </td>
         </tr>
 }

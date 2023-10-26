@@ -31,7 +31,7 @@ public partial class LocalDBChinookContext : DbContext
             entity.Property(e => e.AlbumId).ValueGeneratedNever();
 
             entity.HasOne(d => d.Artist).WithMany(p => p.Albums)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.ClientCascade)
                 .HasConstraintName("FK_AlbumArtistId");
         });
 
@@ -45,7 +45,7 @@ public partial class LocalDBChinookContext : DbContext
             entity.Property(e => e.InvoiceLineId).ValueGeneratedNever();
 
             entity.HasOne(d => d.Track).WithMany(p => p.InvoiceLines)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.ClientCascade)
                 .HasConstraintName("FK_InvoiceLineTrackId");
         });
 
@@ -54,7 +54,7 @@ public partial class LocalDBChinookContext : DbContext
             entity.HasKey(e => new { e.PlaylistId, e.TrackId }).IsClustered(false);
 
             entity.HasOne(d => d.Track).WithMany(p => p.PlaylistTracks)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.ClientCascade)
                 .HasConstraintName("FK_PlaylistTrackTrackId");
         });
 
@@ -63,7 +63,7 @@ public partial class LocalDBChinookContext : DbContext
             entity.Property(e => e.TrackId).ValueGeneratedNever();
 
             entity.HasOne(d => d.Album).WithMany(p => p.Tracks)
-            .OnDelete(DeleteBehavior.Cascade)
+            .OnDelete(DeleteBehavior.ClientCascade)
             .HasConstraintName("FK_TrackAlbumId");
         });
 
@@ -71,4 +71,6 @@ public partial class LocalDBChinookContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    public DbSet<IzquierdoAndres_Musica.Models.Review>? Review { get; set; }
 }

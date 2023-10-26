@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
@@ -17,8 +18,9 @@ public partial class Track
     [Key]
     public int TrackId { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Campo olbitario.")]
     [StringLength(200)]
+    [DisplayName("Nombre")]
     public string Name { get; set; }
 
     public int? AlbumId { get; set; }
@@ -27,14 +29,20 @@ public partial class Track
 
     public int? GenreId { get; set; }
 
+    [Required(ErrorMessage = "Campo olbitario.")]
     [StringLength(220)]
+    [DisplayName("Compositor")]
     public string Composer { get; set; }
 
+    [Required(ErrorMessage = "Campo olbitario.")]
+    [DisplayName("Duración")]
     public int Milliseconds { get; set; }
 
     public int? Bytes { get; set; }
 
+    [Required(ErrorMessage = "Campo olbitario.")]
     [Column(TypeName = "numeric(10, 2)")]
+    [DisplayName("Precio")]
     public decimal UnitPrice { get; set; }
 
     [ForeignKey("AlbumId")]

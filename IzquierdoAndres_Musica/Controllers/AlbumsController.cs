@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IzquierdoAndres_Musica.Data;
 using IzquierdoAndres_Musica.Models;
+using Microsoft.IdentityModel.Tokens;
 
 namespace IzquierdoAndres_Musica.Controllers
 {
@@ -22,9 +23,18 @@ namespace IzquierdoAndres_Musica.Controllers
         // GET: Albums
         public async Task<IActionResult> Index()
         {
-            var localDBChinookContext = _context.Albums.Include(a => a.Artist).Take(15);
+            //var localDBChinookContext = _context.Albums.Include(a => a.Artist).OrderByDescending(i => i.AlbumId).Take(15);
+            var localDBChinookContext = _context.Albums.Include(a => a.Artist).OrderByDescending(i => i.AlbumId);
+
             return View(await localDBChinookContext.ToListAsync());
         }
+
+        public async Task<IActionResult> Show(int id)
+        {
+            var localDBChinookContext = _context.Albums.Include(a => a.Artist).Where(a => a.ArtistId == id).OrderByDescending(i => i.AlbumId);
+            return View(await localDBChinookContext.ToListAsync());
+        }
+
 
         // GET: Albums/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -53,8 +63,7 @@ namespace IzquierdoAndres_Musica.Controllers
         }
 
         // POST: Albums/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Title,ArtistId")] Album album)
@@ -87,9 +96,8 @@ namespace IzquierdoAndres_Musica.Controllers
             return View(album);
         }
 
-        // POST: Albums/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Albums/Edit
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AlbumId,Title,ArtistId")] Album album)
@@ -117,9 +125,9 @@ namespace IzquierdoAndres_Musica.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Edit));
             }
-            ViewData["ArtistId"] = new SelectList(_context.Artists, "ArtistId", "Named", album.ArtistId);
+            ViewData["ArtistId"] = new SelectList(_context.Artists, "ArtistId", "Name", album.ArtistId);
             return View(album);
         }
 
@@ -153,10 +161,32 @@ namespace IzquierdoAndres_Musica.Controllers
                 return Problem("Entity set 'LocalDBChinookContext.Albums'  is null.");
             }
             var album = await _context.Albums.Include(a => a.Tracks).FirstOrDefaultAsync(a => a.AlbumId == id);
+
             if (album != null)
             {
-                _context.Tracks.RemoveRange(album.Tracks);
+                var anyTracks = album.Tracks.Count();
+
+                if (anyTracks != 0)
+                {
+                    var tracksToDelete = await _context.Tracks.Where(t => t.AlbumId == id).ToListAsync();
+
+                    foreach (var track in tracksToDelete)
+                    {
+                        var tracksInPlaylist = await _context.PlaylistTracks.Where(t => t.TrackId == track.TrackId).ToListAsync();
+                        var invoiceLine = await _context.InvoiceLines.Where(t => t.TrackId == track.TrackId).ToListAsync();
+
+                        tracksInPlaylist.ForEach(playlist => _context.PlaylistTracks.Remove(playlist));
+
+                        invoiceLine.ForEach(invoiceLine => _context.InvoiceLines.Remove(invoiceLine));
+
+                        _context.Tracks.Remove(track);
+                    }
+                }         
                 _context.Albums.Remove(album);
+            }
+            else
+            {
+                return Problem($"No se encontre un álbum con el id: {id}");
             }
             
             await _context.SaveChangesAsync();
@@ -165,8 +195,12 @@ namespace IzquierdoAndres_Musica.Controllers
 
         public async Task<IActionResult> ShowSongList(int id)
         {
-            return View(id);
+            var artistSongs = _context.Tracks.Where(a => a.AlbumId == id);
+
+            return View(await artistSongs.ToListAsync());
         }
+
+        
 
         private bool AlbumExists(int id)
         {

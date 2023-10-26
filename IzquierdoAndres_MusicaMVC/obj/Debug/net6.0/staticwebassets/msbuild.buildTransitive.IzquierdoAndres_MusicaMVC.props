@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\IzquierdoAndres_MusicaMVC.props" />
+</Project>

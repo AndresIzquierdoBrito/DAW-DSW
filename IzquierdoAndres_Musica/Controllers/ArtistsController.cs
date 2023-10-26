@@ -23,7 +23,7 @@ namespace IzquierdoAndres_Musica.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.Artists != null ? 
-                          View(await _context.Artists.ToListAsync()) :
+                          View(await _context.Artists.OrderBy(a => a.Name).Take(15).ToListAsync()) :
                           Problem("Entity set 'LocalDBChinookContext.Artists'  is null.");
         }
 
@@ -52,12 +52,12 @@ namespace IzquierdoAndres_Musica.Controllers
         }
 
         // POST: Artists/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ArtistId,Name")] Artist artist)
+        public async Task<IActionResult> Create([Bind("Name")] Artist artist)
         {
+            artist.ArtistId = _context.Artists.Max(a => a.ArtistId) + 1;
             if (ModelState.IsValid)
             {
                 _context.Add(artist);
@@ -84,8 +84,7 @@ namespace IzquierdoAndres_Musica.Controllers
         }
 
         // POST: Artists/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ArtistId,Name")] Artist artist)
@@ -113,7 +112,7 @@ namespace IzquierdoAndres_Musica.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Edit));
             }
             return View(artist);
         }
@@ -126,8 +125,8 @@ namespace IzquierdoAndres_Musica.Controllers
                 return NotFound();
             }
 
-            var artist = await _context.Artists
-                .FirstOrDefaultAsync(m => m.ArtistId == id);
+            var artist = await _context.Artists.FirstOrDefaultAsync(m => m.ArtistId == id);
+
             if (artist == null)
             {
                 return NotFound();
@@ -145,15 +144,63 @@ namespace IzquierdoAndres_Musica.Controllers
             {
                 return Problem("Entity set 'LocalDBChinookContext.Artists'  is null.");
             }
-            var artist = await _context.Artists.FindAsync(id);
+
+            var artist = await _context.Artists.Include(a => a.Albums).ThenInclude(t => t.Tracks).FirstOrDefaultAsync(a => a.ArtistId == id);
+
             if (artist != null)
             {
+                var albums = artist.Albums;
+
+                //var albums = await _context.Albums.Where(a => a.ArtistId == artist.ArtistId).ToListAsync();
+
+                if (albums != null)
+                {
+
+                    foreach (var album in albums)
+                    {
+                        var anyTracks = album.Tracks.Count();
+
+                        if (anyTracks != 0)
+                        {
+                            var tracksToDelete = await _context.Tracks.Where(t => t.AlbumId == album.AlbumId).ToListAsync();
+
+                            foreach (var track in tracksToDelete)
+                            {
+                                var tracksInPlaylist = await _context.PlaylistTracks.Where(t => t.TrackId == track.TrackId).ToListAsync();
+                                var invoiceLine = await _context.InvoiceLines.Where(t => t.TrackId == track.TrackId).ToListAsync();
+
+                                tracksInPlaylist.ForEach(playlist => _context.PlaylistTracks.Remove(playlist));
+
+                                invoiceLine.ForEach(invoiceLine => _context.InvoiceLines.Remove(invoiceLine));
+
+                                _context.Tracks.Remove(track);
+                            }
+                        }
+                        _context.Albums.Remove(album);
+
+                    }
+
+
+
+                }
                 _context.Artists.Remove(artist);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+
+        public async Task<IActionResult> ShowAlbumList(int id)
+        {
+            var localDBChinookContext = _context.Albums.Include(a => a.Artist)
+                                                    .Where(a => a.ArtistId == id)
+                                                    .OrderByDescending(i => i.AlbumId);
+            return View(await localDBChinookContext.ToListAsync());
+        }
+
+ 
+
 
         private bool ArtistExists(int id)
         {

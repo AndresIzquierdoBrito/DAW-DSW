@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
@@ -15,12 +16,14 @@ public partial class Album
     [Key]
     public int AlbumId { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Campo olbitario.")]
     [StringLength(160)]
+    [DisplayName("Título")]
     public string Title { get; set; }
 
     public int ArtistId { get; set; }
 
+    [DisplayName("Artista")]
     [ForeignKey("ArtistId")]
     [InverseProperty("Albums")]
     public virtual Artist Artist { get; set; }
