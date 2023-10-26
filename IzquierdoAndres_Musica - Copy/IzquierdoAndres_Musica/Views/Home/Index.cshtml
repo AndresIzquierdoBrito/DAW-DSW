@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<main>
+    <div>
+        <h1>Gestión de discos</h1>
+        <h3>Un gestor, de discos</h3>
+        <a asp-area="" asp-controller="" asp-action="Error">Admin</a>
+
+    </div>
+
+    <div>
+        <div class="option-column">
+            <h2>Discos</h2>
+            <a asp-controller="Albums" asp-action="Index">
+                <div>
+                    <img src="https://intheclouds.io/cdn/shop/files/black_e26aafc7-21f0-48cb-82f2-25ca1249949e_grande.png?v=1689212461" alt="" />
+                    <a asp-area="" asp-controller="Albums" asp-action="Index">Ir a discos</a>
+                </div>
+            </a>
+            
+        </div>
+        <div class="option-column">
+            <h2>Artistas</h2>
+            <div>
+                <img src="https://intheclouds.io/cdn/shop/files/black_e26aafc7-21f0-48cb-82f2-25ca1249949e_grande.png?v=1689212461" alt="" />
+                <a asp-area="" asp-controller="Artists" asp-action="Index">Ir a artistas</a>
+
+            </div>
+        </div>
+        <div class="option-column">
+            <h2>Login</h2>
+            <div>
+                <img src="https://intheclouds.io/cdn/shop/files/black_e26aafc7-21f0-48cb-82f2-25ca1249949e_grande.png?v=1689212461" alt="" />
+                <a asp-area="" asp-controller="Home" asp-action="Index">Ir a identificación</a>
+            </div>
+        </div>
+    </div>
+</main>
