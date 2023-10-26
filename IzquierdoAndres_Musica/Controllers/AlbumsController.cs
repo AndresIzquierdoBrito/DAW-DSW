@@ -23,9 +23,7 @@ namespace IzquierdoAndres_Musica.Controllers
         // GET: Albums
         public async Task<IActionResult> Index()
         {
-            //var localDBChinookContext = _context.Albums.Include(a => a.Artist).OrderByDescending(i => i.AlbumId).Take(15);
-            var localDBChinookContext = _context.Albums.Include(a => a.Artist).OrderByDescending(i => i.AlbumId);
-
+            var localDBChinookContext = _context.Albums.Include(a => a.Artist).OrderByDescending(i => i.AlbumId).Take(15);
             return View(await localDBChinookContext.ToListAsync());
         }
 

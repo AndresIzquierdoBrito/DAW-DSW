@@ -177,11 +177,7 @@ namespace IzquierdoAndres_Musica.Controllers
                             }
                         }
                         _context.Albums.Remove(album);
-
                     }
-
-
-
                 }
                 _context.Artists.Remove(artist);
             }
