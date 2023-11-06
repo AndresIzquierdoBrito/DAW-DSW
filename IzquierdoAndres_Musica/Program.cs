@@ -1,4 +1,5 @@
 using IzquierdoAndres_Musica.Data;
+using IzquierdoAndres_Musica.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,13 @@ builder.Services.AddDbContext<LocalDBChinookContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DbChinook")));
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
