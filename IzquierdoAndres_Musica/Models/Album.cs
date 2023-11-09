@@ -17,7 +17,7 @@ public partial class Album
     public int AlbumId { get; set; }
 
     [Required(ErrorMessage = "Campo olbitario.")]
-    [StringLength(160)]
+    [StringLength(160, MinimumLength = 1, ErrorMessage = "Introduce un título entre 1 y 160 carácteres.")]
     [DisplayName("Título")]
     public string Title { get; set; }
 

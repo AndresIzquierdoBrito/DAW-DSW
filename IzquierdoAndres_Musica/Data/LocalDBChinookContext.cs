@@ -2,75 +2,84 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using IzquierdoAndres_Musica.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using IzquierdoAndres_Musica.Models;
 
-namespace IzquierdoAndres_Musica.Data;
-
-public partial class LocalDBChinookContext : DbContext
+namespace IzquierdoAndres_Musica.Data
 {
-    public LocalDBChinookContext(DbContextOptions<LocalDBChinookContext> options)
-        : base(options)
+    public partial class LocalDBChinookContext : DbContext
     {
+        public LocalDBChinookContext()
+        {
+        }
+
+        public LocalDBChinookContext(DbContextOptions<LocalDBChinookContext> options)
+            : base(options)
+        {
+        }
+
+        public virtual DbSet<Album> Albums { get; set; }
+        public virtual DbSet<Artist> Artists { get; set; }
+        public virtual DbSet<InvoiceLine> InvoiceLines { get; set; }
+        public virtual DbSet<PlaylistTrack> PlaylistTracks { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<Track> Tracks { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Album>(entity =>
+            {
+                entity.Property(e => e.AlbumId).ValueGeneratedNever();
+
+                entity.HasOne(d => d.Artist)
+                    .WithMany(p => p.Albums)
+                    .HasForeignKey(d => d.ArtistId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_AlbumArtistId");
+            });
+
+            modelBuilder.Entity<Artist>(entity =>
+            {
+                entity.Property(e => e.ArtistId).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<InvoiceLine>(entity =>
+            {
+                entity.Property(e => e.InvoiceLineId).ValueGeneratedNever();
+
+                entity.HasOne(d => d.Track)
+                    .WithMany(p => p.InvoiceLines)
+                    .HasForeignKey(d => d.TrackId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_InvoiceLineTrackId");
+            });
+
+            modelBuilder.Entity<PlaylistTrack>(entity =>
+            {
+                entity.HasKey(e => new { e.PlaylistId, e.TrackId })
+                    .IsClustered(false);
+
+                entity.HasOne(d => d.Track)
+                    .WithMany(p => p.PlaylistTracks)
+                    .HasForeignKey(d => d.TrackId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PlaylistTrackTrackId");
+            });
+
+            modelBuilder.Entity<Track>(entity =>
+            {
+                entity.Property(e => e.TrackId).ValueGeneratedNever();
+
+                entity.HasOne(d => d.Album)
+                    .WithMany(p => p.Tracks)
+                    .HasForeignKey(d => d.AlbumId)
+                    .HasConstraintName("FK_TrackAlbumId");
+            });
+
+            OnModelCreatingPartial(modelBuilder);
+        }
+
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
-
-    public virtual DbSet<Album> Albums { get; set; }
-
-    public virtual DbSet<Artist> Artists { get; set; }
-
-    public virtual DbSet<InvoiceLine> InvoiceLines { get; set; }
-
-    public virtual DbSet<PlaylistTrack> PlaylistTracks { get; set; }
-
-    public virtual DbSet<Track> Tracks { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Album>(entity =>
-        {
-            entity.Property(e => e.AlbumId).ValueGeneratedNever();
-
-            entity.HasOne(d => d.Artist).WithMany(p => p.Albums)
-                .OnDelete(DeleteBehavior.ClientCascade)
-                .HasConstraintName("FK_AlbumArtistId");
-        });
-
-        modelBuilder.Entity<Artist>(entity =>
-        {
-            entity.Property(e => e.ArtistId).ValueGeneratedNever();
-        });
-
-        modelBuilder.Entity<InvoiceLine>(entity =>
-        {
-            entity.Property(e => e.InvoiceLineId).ValueGeneratedNever();
-
-            entity.HasOne(d => d.Track).WithMany(p => p.InvoiceLines)
-                .OnDelete(DeleteBehavior.ClientCascade)
-                .HasConstraintName("FK_InvoiceLineTrackId");
-        });
-
-        modelBuilder.Entity<PlaylistTrack>(entity =>
-        {
-            entity.HasKey(e => new { e.PlaylistId, e.TrackId }).IsClustered(false);
-
-            entity.HasOne(d => d.Track).WithMany(p => p.PlaylistTracks)
-                .OnDelete(DeleteBehavior.ClientCascade)
-                .HasConstraintName("FK_PlaylistTrackTrackId");
-        });
-
-        modelBuilder.Entity<Track>(entity =>
-        {
-            entity.Property(e => e.TrackId).ValueGeneratedNever();
-
-            entity.HasOne(d => d.Album).WithMany(p => p.Tracks)
-            .OnDelete(DeleteBehavior.ClientCascade)
-            .HasConstraintName("FK_TrackAlbumId");
-        });
-
-        OnModelCreatingPartial(modelBuilder);
-    }
-
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-    public DbSet<IzquierdoAndres_Musica.Models.Review>? Review { get; set; }
 }

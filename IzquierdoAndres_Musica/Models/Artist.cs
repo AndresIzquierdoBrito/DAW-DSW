@@ -16,7 +16,7 @@ public partial class Artist
     public int ArtistId { get; set; }
 
     [Required(ErrorMessage = "Campo olbitario.")]
-    [StringLength(120)]
+    [StringLength(160, MinimumLength = 1, ErrorMessage = "Introduce un título entre 1 y 120 carácteres.")]
     [DisplayName("Nombre")]
     public string Name { get; set; }
 

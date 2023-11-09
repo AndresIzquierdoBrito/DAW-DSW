@@ -111,7 +111,7 @@ namespace IzquierdoAndres_Musica.Migrations
                     b.Property<int>("ArtistId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Comment")
                         .IsRequired()
                         .HasMaxLength(120)
                         .HasColumnType("nvarchar(120)");
@@ -213,13 +213,11 @@ namespace IzquierdoAndres_Musica.Migrations
 
             modelBuilder.Entity("IzquierdoAndres_Musica.Models.Review", b =>
                 {
-                    b.HasOne("IzquierdoAndres_Musica.Models.Artist", "Artist")
+                    b.HasOne("IzquierdoAndres_Musica.Models.Artist", null)
                         .WithMany("Reviews")
                         .HasForeignKey("ArtistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Artist");
                 });
 
             modelBuilder.Entity("IzquierdoAndres_Musica.Models.Track", b =>

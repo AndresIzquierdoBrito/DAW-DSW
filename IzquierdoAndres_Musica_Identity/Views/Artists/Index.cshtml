@@ -1,0 +1,36 @@
+﻿@model IEnumerable<IzquierdoAndres_Musica.Models.Artist>
+
+@{
+    ViewData["Title"] = "Artistas";
+}
+
+<h1>Lista de artistas</h1>
+
+<p>
+    <a class="button-discos" asp-action="Create">Crear nuevo artista</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-controller="Albums" asp-action="Show" asp-route-id="@item.ArtistId">Álbumes</a> |
+                <a asp-action="Edit" asp-route-id="@item.ArtistId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ArtistId">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.ArtistId">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

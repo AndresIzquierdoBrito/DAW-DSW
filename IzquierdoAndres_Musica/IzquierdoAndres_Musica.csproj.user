@@ -11,8 +11,16 @@
     <WebStackScaffolding_DbContextTypeFullName>IzquierdoAndres_Musica.Data.LocalDBChinookContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
-    <View_SelectedScaffolderID>RazorViewScaffolder</View_SelectedScaffolderID>
+<<<<<<< HEAD
+    <View_SelectedScaffolderID>RazorViewEmptyScaffolder</View_SelectedScaffolderID>
+    <View_SelectedScaffolderCategoryPath>root/Common/MVC/View</View_SelectedScaffolderCategoryPath>
+=======
+<<<<<<< HEAD
+=======
+    <View_SelectedScaffolderID>RazorViewEmptyScaffolder</View_SelectedScaffolderID>
     <View_SelectedScaffolderCategoryPath>root/Common/MVC/View</View_SelectedScaffolderCategoryPath>
     <WebStackScaffolding_ViewDialogWidth>650.4</WebStackScaffolding_ViewDialogWidth>
+>>>>>>> 6fb0f47 (Commit)
+>>>>>>> f06e521 (Commit)
   </PropertyGroup>
 </Project>

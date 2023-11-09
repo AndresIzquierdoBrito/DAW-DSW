@@ -1,5 +1,5 @@
 ﻿{
-   "CodeGenerationMode": 3,
+   "CodeGenerationMode": 2,
    "ContextClassName": "(LocalDB)\\ChinookContext",
    "ContextNamespace": null,
    "DefaultDacpacSchema": null,
@@ -12,7 +12,7 @@
    "ProjectRootNamespace": "IzquierdoAndres_Musica",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 0,
-   "SelectedToBeGenerated": 0,
+   "SelectedToBeGenerated": 1,
    "T4TemplatePath": null,
    "Tables": [
       {
@@ -32,11 +32,15 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Review]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Track]",
          "ObjectType": 0
       }
    ],
-   "UiHint": "Chinook.mdf",
+   "UiHint": "(localdb)\\MSSQLLocalDB.Chinook",
    "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": true,
@@ -45,10 +49,11 @@
    "UseFluentApiOnly": false,
    "UseHandleBars": false,
    "UseHierarchyId": false,
-   "UseInflector": true,
+   "UseInflector": false,
    "UseLegacyPluralizer": false,
    "UseManyToManyEntity": false,
    "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
    "UseNoObjectFilter": false,
    "UseNodaTime": false,
    "UseNullableReferences": false,

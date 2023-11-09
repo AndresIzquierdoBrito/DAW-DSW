@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "A:\\Necro's Files\\Desktop\\Repositores\\DAW-DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica.csproj": {}
+    "C:\\Users\\2dawa\\Desktop\\DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica.csproj": {}
   },
   "projects": {
-    "A:\\Necro's Files\\Desktop\\Repositores\\DAW-DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica.csproj": {
+    "C:\\Users\\2dawa\\Desktop\\DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\Necro's Files\\Desktop\\Repositores\\DAW-DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica.csproj",
+        "projectUniqueName": "C:\\Users\\2dawa\\Desktop\\DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica.csproj",
         "projectName": "IzquierdoAndres_Musica",
-        "projectPath": "A:\\Necro's Files\\Desktop\\Repositores\\DAW-DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica.csproj",
-        "packagesPath": "C:\\Users\\Necro\\.nuget\\packages\\",
-        "outputPath": "A:\\Necro's Files\\Desktop\\Repositores\\DAW-DSW\\IzquierdoAndres_Musica\\obj\\",
+        "projectPath": "C:\\Users\\2dawa\\Desktop\\DSW\\IzquierdoAndres_Musica\\IzquierdoAndres_Musica.csproj",
+        "packagesPath": "C:\\Users\\2dawa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\2dawa\\Desktop\\DSW\\IzquierdoAndres_Musica\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Necro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\2dawa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -85,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

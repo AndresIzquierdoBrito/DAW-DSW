@@ -292,3 +292,4 @@ C:\Users\2dawa\Desktop\DSW\AUT02_05_DbFirst\AUT02_05_DbFirst\obj\Debug\net6.0\re
 C:\Users\2dawa\Desktop\DSW\AUT02_05_DbFirst\AUT02_05_DbFirst\obj\Debug\net6.0\AUT02_05_DbFirst.pdb
 C:\Users\2dawa\Desktop\DSW\AUT02_05_DbFirst\AUT02_05_DbFirst\obj\Debug\net6.0\AUT02_05_DbFirst.genruntimeconfig.cache
 C:\Users\2dawa\Desktop\DSW\AUT02_05_DbFirst\AUT02_05_DbFirst\obj\Debug\net6.0\ref\AUT02_05_DbFirst.dll
+C:\Users\2dawa\Desktop\DSW\AUT02_05_DbFirst\AUT02_05_DbFirst\bin\Debug\net6.0\efpt.config.json
