@@ -2,7 +2,7 @@
 {
     public class Game
     {
-        public int Id { get; set; }
+        public int Id = 0;
 
         public string Name { get; set; }
 

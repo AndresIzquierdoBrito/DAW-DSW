@@ -18,6 +18,7 @@ namespace AUT03_02_AndresIzquierdo_JuegosAPI.Controllers
 
         // GET: api/<GameController>
 
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
         public IActionResult Get()
         {
@@ -26,21 +27,23 @@ namespace AUT03_02_AndresIzquierdo_JuegosAPI.Controllers
 
         // GET api/<GameController>/5
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            
-            return Ok(Games.Find(game => game.Id == id));
+            var game = Games.Find(game => game.Id == id);
+            if (game == null) 
+                return NotFound();
+            return Ok(game);
         }
 
         // POST api/<GameController>
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
         public void IActionResult([FromBody] Game game)
         {
-            if (game == null) { 
             
-            }
         }
 
         // PUT api/<GameController>/5
