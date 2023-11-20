@@ -7,23 +7,13 @@ namespace AUT03_02_AndresIzquierdo_JuegosAPI.Controllers
     [ApiController]
     public class GameController : ControllerBase
     {
-        private static List<Game> Games = new List<Game>()
-        {
-            new Game ( "The Witcher 3: Wild Hunt", "Acción RPG" ),
-            new Game ("Fortnite", "Battle Royale"),
-            new Game ("Grand Theft Auto V", "Acción-Aventura"),
-            new Game ("Minecraft", "Sandbox"),
-            new Game ("World of Warcraft", "MMO")
-        };
-
         // GET: api/<GameController>
-
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(Games);
+            return Ok(Game.gameList);
         }
 
         // GET api/<GameController>/5
@@ -33,7 +23,7 @@ namespace AUT03_02_AndresIzquierdo_JuegosAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var game = Games.Find(game => game.Id == id);
+            var game = Game.gameList.Find(game => game.Id == id);
             if (game == null) 
                 return NotFound();
             return Ok(game);
@@ -43,25 +33,53 @@ namespace AUT03_02_AndresIzquierdo_JuegosAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [HttpPost]
-        public void IActionResult([FromBody] Game game)
+        public IActionResult Post([FromBody] Game game)
         {
-            
+            Game.gameList.Add(game);
+
+            return CreatedAtAction("Get", game);
         }
 
         // PUT api/<GameController>/5
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Game game)
+        public IActionResult Put(int id, [FromBody] Game game)
         {
+            Game.ReduceGlobalIdCount(); // Necesario ya que al hacer binding, se crea un juego y aumenta el count de ID global.
+            int index = Game.gameList.FindIndex(x => x.Id == id);
+
+            if (index == -1)
+            {
+                return NotFound($"No existe un juego con el id {id}.");
+            }
+
+            Game.gameList[index].Name = game.Name;
+            Game.gameList[index].Genre = game.Genre;
+
+            return Ok(Game.gameList[index]);
+
         }
 
         // DELETE api/<GameController>/5
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            int index = Game.gameList.FindIndex(x => x.Id == id);
+
+            if (index == -1)
+            {
+                return NotFound($"No existe un juego con el id {id}.");
+            }
+
+            var deletedGame = Game.gameList.Find(game => game.Id == id);
+            Game.gameList.RemoveAt(index);
+
+            return Ok($"Borrado con exito el juego con ID: {id}. Nombre: {deletedGame.Name} / Género: {deletedGame.Genre}");
         }
-}
+    }
 }

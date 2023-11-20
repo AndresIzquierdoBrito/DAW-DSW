@@ -1,3 +1,5 @@
+using AUT03_02_AndresIzquierdo_JuegosAPI.Controllers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
