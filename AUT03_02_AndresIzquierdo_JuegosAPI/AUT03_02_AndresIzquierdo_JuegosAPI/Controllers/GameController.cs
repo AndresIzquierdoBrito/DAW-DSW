@@ -9,16 +9,17 @@ namespace AUT03_02_AndresIzquierdo_JuegosAPI.Controllers
     {
         private static List<Game> Games = new List<Game>()
         {
-            new Game { Id = 1, Name = "The Witcher 3: Wild Hunt", Genre = "Acción RPG" },
-            new Game { Id = 2, Name = "Fortnite", Genre = "Battle Royale" },
-            new Game { Id = 3, Name = "Grand Theft Auto V", Genre = "Acción-Aventura" },
-            new Game { Id = 4, Name = "Minecraft", Genre = "Sandbox" },
-            new Game { Id = 5, Name = "World of Warcraft", Genre = "MMO" }
+            new Game ( "The Witcher 3: Wild Hunt", "Acción RPG" ),
+            new Game ("Fortnite", "Battle Royale"),
+            new Game ("Grand Theft Auto V", "Acción-Aventura"),
+            new Game ("Minecraft", "Sandbox"),
+            new Game ("World of Warcraft", "MMO")
         };
 
         // GET: api/<GameController>
 
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet]
         public IActionResult Get()
         {
@@ -40,6 +41,7 @@ namespace AUT03_02_AndresIzquierdo_JuegosAPI.Controllers
 
         // POST api/<GameController>
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [HttpPost]
         public void IActionResult([FromBody] Game game)
         {
@@ -47,12 +49,16 @@ namespace AUT03_02_AndresIzquierdo_JuegosAPI.Controllers
         }
 
         // PUT api/<GameController>/5
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Game game)
         {
         }
 
         // DELETE api/<GameController>/5
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
