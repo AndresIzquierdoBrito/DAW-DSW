@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-//using UT03_Ej02_AndresIzquierdo.Data;
+using UT03_Ej02_AndresIzquierdo.Data;
 
 #nullable disable
 
 namespace UT03_Ej02_AndresIzquierdo.Migrations
 {
-    //[DbContext(typeof(UT03_Ej02_AndresIzquierdoContext))]
-    [Migration("20231120092338_GameGenreMig")]
-    partial class GameGenreMig
+    [DbContext(typeof(UT03_Ej02_AndresIzquierdoContext))]
+    [Migration("20231122134946_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,7 +31,7 @@ namespace UT03_Ej02_AndresIzquierdo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GameId"), 1L, 1);
 
-                    b.Property<int>("GenreIdGenre")
+                    b.Property<int>("GenreId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -41,9 +41,41 @@ namespace UT03_Ej02_AndresIzquierdo.Migrations
 
                     b.HasKey("GameId");
 
-                    b.HasIndex("GenreIdGenre");
+                    b.HasIndex("GenreId");
 
                     b.ToTable("Game");
+
+                    b.HasData(
+                        new
+                        {
+                            GameId = 1,
+                            GenreId = 1,
+                            Title = "Last of us"
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            GenreId = 1,
+                            Title = "Tomb Raider"
+                        },
+                        new
+                        {
+                            GameId = 3,
+                            GenreId = 2,
+                            Title = "Mario Bros"
+                        },
+                        new
+                        {
+                            GameId = 4,
+                            GenreId = 2,
+                            Title = "Rayman"
+                        },
+                        new
+                        {
+                            GameId = 5,
+                            GenreId = 3,
+                            Title = "Starcraft"
+                        });
                 });
 
             modelBuilder.Entity("UT03_Ej02_AndresIzquierdo.Models.Genre", b =>
@@ -62,13 +94,30 @@ namespace UT03_Ej02_AndresIzquierdo.Migrations
                     b.HasKey("IdGenre");
 
                     b.ToTable("Genre");
+
+                    b.HasData(
+                        new
+                        {
+                            IdGenre = 1,
+                            Name = "Adventure"
+                        },
+                        new
+                        {
+                            IdGenre = 2,
+                            Name = "Plataformer"
+                        },
+                        new
+                        {
+                            IdGenre = 3,
+                            Name = "Strategy"
+                        });
                 });
 
             modelBuilder.Entity("UT03_Ej02_AndresIzquierdo.Models.Game", b =>
                 {
                     b.HasOne("UT03_Ej02_AndresIzquierdo.Models.Genre", "Genre")
                         .WithMany("GenreGames")
-                        .HasForeignKey("GenreIdGenre")
+                        .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
