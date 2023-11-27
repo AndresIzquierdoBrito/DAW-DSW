@@ -32,6 +32,7 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
         {
@@ -80,6 +81,7 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Album>> GetAlbum(int id)
         {
             try
@@ -126,10 +128,11 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         /// <returns>Sin contenido si la actualización es exitosa.</returns>
         // PUT: api/Albums/5
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> PutAlbum(int id, AlbumDTO albumDTO)
         {
             try
@@ -140,7 +143,7 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
                 {
                     ProblemDetails problemDetails = CreateProblemDetails(StatusCodes.Status404NotFound, "No se ha encontrado", $"No se ha encontrado un álbum con el id especificado: {id}.");
                     return NotFound(problemDetails);
-                };
+                }
 
                 var artist = await _context.Artists.FindAsync(albumDTO.ArtistId);
 
@@ -185,10 +188,11 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         /// <returns>Álbum creado con un código 201 (Creado) y una ubicación que apunta al nuevo recurso.</returns>
         // POST: api/Albums
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Album>> PostAlbum(AlbumDTO albumDTO)
         {
             try
@@ -233,14 +237,15 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         /// <returns>Sin contenido si la eliminación es exitosa.</returns>
         // DELETE: api/Albums/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteAlbum(int id)
         {
             try
             {
-                var album = await _context.Albums.Include(a => a.Artist).Include(t => t.Tracks).FirstOrDefaultAsync(a => a.AlbumId == id);
+                var album = await _context.Albums.Include(t => t.Tracks).FirstOrDefaultAsync(a => a.AlbumId == id);
                 if (album == null)
                 {
                     ProblemDetails problemDetails = CreateProblemDetails(StatusCodes.Status404NotFound, "No se ha encontrado", $"No se ha encontrado un álbum con el id especificado: {id}.");

@@ -33,21 +33,11 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IEnumerable<Artist>>> GetArtists()
         {
             try // Evita excepciones en caso de que la DB no exista.
             {
-                if (_context.Artists == null)
-                {
-                    var problemDetails = new ProblemDetails
-                    {
-                        Status = StatusCodes.Status404NotFound,
-                        Title = "No se ha encontrado",
-                        Detail = $"No existen artistas."
-                    };
-                    return NotFound(problemDetails);
-                }
-
                 var artists = await _context.Artists
                     .OrderBy(n => n.Name)
                     .Select(a => new
@@ -83,20 +73,11 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Artist>> GetArtist(int id)
         {
             try
             {
-                if (_context.Artists == null)
-                {
-                    var problemDetails = new ProblemDetails
-                    {
-                        Status = StatusCodes.Status404NotFound,
-                        Title = "No se ha encontrado",
-                        Detail = $"No existen artistas."
-                    };
-                    return NotFound(problemDetails);
-                }
                 var artist = await _context.Artists.Select(a => new
                 {
                     a.ArtistId,
@@ -112,12 +93,7 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
 
                 if (artist == null)
                 {
-                    var problemDetails = new ProblemDetails
-                    {
-                        Status = StatusCodes.Status404NotFound,
-                        Title = "No se ha encontrado",
-                        Detail = $"No se ha encontrado un álbum con el id especificado: {id}."
-                    };
+                    ProblemDetails problemDetails = CreateProblemDetails(StatusCodes.Status404NotFound, "No se ha encontrado", $"No se ha encontrado un álbum con el id especificado: {id}.");
                     return NotFound(problemDetails);
                 }
 
@@ -137,10 +113,11 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         /// <returns>Sin contenido si la actualización es exitosa.</returns>
         // PUT: api/Artists/5
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> PutArtist(int id, ArtistDTO artistDTO)
         {
             try
@@ -186,10 +163,11 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         /// <returns>Artista creado con un código 201 (Creado) y una ubicación que apunta al nuevo recurso.</returns>
         // POST: api/Artists
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Artist>> PostArtist(ArtistDTO artistDTO)
         {
             try
@@ -212,12 +190,7 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
                 {
                     if (ArtistExists(artist.ArtistId))
                     {
-                        var problemDetails = new ProblemDetails
-                        {
-                            Status = StatusCodes.Status409Conflict,
-                            Title = "Conflicto",
-                            Detail = $"Se ha encontrado un conflicto en el procesamiento de la petición."
-                        };
+                        ProblemDetails problemDetails = CreateProblemDetails(StatusCodes.Status409Conflict, "Conflicto", $"Se ha encontrado un conflicto en el procesamiento de la petición.");
                         return Conflict(problemDetails);
                     }
                     else
@@ -241,22 +214,19 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         /// <returns>Sin contenido si la eliminación es exitosa.</returns>
         // DELETE: api/Artists/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteArtist(int id)
         {
             try
             {
                 var artist = await _context.Artists.Include(a => a.Albums).ThenInclude(t => t.Tracks).FirstOrDefaultAsync(a => a.ArtistId == id);
+
                 if (artist == null)
                 {
-                    var problemDetails = new ProblemDetails
-                    {
-                        Status = StatusCodes.Status404NotFound,
-                        Title = "Not Found",
-                        Detail = $"No se ha encontrado un artista con el id especificado: {id}."
-                    };
+                    ProblemDetails problemDetails = CreateProblemDetails(StatusCodes.Status404NotFound, "Not Found", $"No se ha encontrado un artista con el id especificado: {id}.");
                     return NotFound(problemDetails);
                 }
 
