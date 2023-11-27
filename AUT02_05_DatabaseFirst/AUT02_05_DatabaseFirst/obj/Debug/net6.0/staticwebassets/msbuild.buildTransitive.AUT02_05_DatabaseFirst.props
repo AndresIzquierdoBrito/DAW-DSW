@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\AUT02_05_DatabaseFirst.props" />
-</Project>
