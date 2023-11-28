@@ -197,6 +197,14 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         {
             try
             {
+                var artist = await _context.Artists.FindAsync(albumDTO.ArtistId);
+
+                if (artist == null)
+                {
+                    ProblemDetails problemDetails = CreateProblemDetails(StatusCodes.Status404NotFound, "No se ha encontrado", $"No se ha encontrado un artista con el id especificado: {albumDTO.ArtistId}.");
+                    return NotFound(problemDetails);
+                }
+
                 int id = _context.Albums.OrderBy(a => a.AlbumId).Last().AlbumId + 1;
                 var album = new Album
                 {
