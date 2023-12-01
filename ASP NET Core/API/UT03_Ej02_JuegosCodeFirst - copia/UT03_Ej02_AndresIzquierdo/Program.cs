@@ -1,15 +1,34 @@
-using AUT03_04_JuegosAPIAuth.Controllers;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Text.Json.Serialization;
+using UT03_Ej02_AndresIzquierdo.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<UT03_Ej02_AndresIzquierdoContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("UT03_Ej02_AndresIzquierdoContext") ?? throw new InvalidOperationException("Connection string 'UT03_Ej02_AndresIzquierdoContext' not found.")));
 
+builder.Services.AddDbContext<UsersContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("UsersContext") ?? throw new 
+        InvalidOperationException("Connection string 'UsersContext' not found.")));
 // Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers().AddJsonOptions(x => 
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+builder.Services.AddIdentityCore<IdentityUser>(options =>
+ options.SignIn.RequireConfirmedEmail = false)
+ .AddRoles<IdentityRole>()
+ .AddEntityFrameworkStores<UsersContext>();
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {

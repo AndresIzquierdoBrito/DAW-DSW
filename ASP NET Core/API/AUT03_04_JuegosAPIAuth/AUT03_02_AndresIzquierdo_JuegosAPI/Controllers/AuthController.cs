@@ -1,4 +1,4 @@
-﻿using AUT03_02_AndresIzquierdo_JuegosAPI.Models;
+﻿using AUT03_04_JuegosAPIAuth.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -6,7 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace AUT03_02_AndresIzquierdo_JuegosAPI.Controllers
+namespace AUT03_04_JuegosAPIAuth.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

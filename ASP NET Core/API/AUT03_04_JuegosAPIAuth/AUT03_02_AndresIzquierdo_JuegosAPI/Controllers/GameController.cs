@@ -1,7 +1,7 @@
-﻿using AUT03_02_AndresIzquierdo_JuegosAPI.Models;
+﻿using AUT03_04_JuegosAPIAuth.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AUT03_02_AndresIzquierdo_JuegosAPI.Controllers
+namespace AUT03_04_JuegosAPIAuth.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

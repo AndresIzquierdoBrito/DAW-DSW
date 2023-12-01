@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Security.Principal;
 
-namespace AUT03_02_AndresIzquierdo_JuegosAPI.Models
+namespace AUT03_04_JuegosAPIAuth.Models
 {
     public class User
     {
