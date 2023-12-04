@@ -1,4 +1,6 @@
 ﻿using System.Security.Claims;
+using System.Text.Json.Serialization;
+
 
 namespace UT03_Ej02_AndresIzquierdo.Models
 {
@@ -8,10 +10,5 @@ namespace UT03_Ej02_AndresIzquierdo.Models
 
         public string Password { get; set; }
 
-        public User(string email, string passwd)
-        {
-            this.Email = email;
-            this.Password = passwd;
-        }
     }
 }
