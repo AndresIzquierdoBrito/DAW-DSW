@@ -9,7 +9,9 @@ public class Main {
         // Eje4();
         //Eje5();
         // EjerStrings();
-        EjerPersonas();
+        // EjerPersonas();
+        EjercicioBits();
+        EjercicioMates();
     }
 
     public static void Eje1(){
@@ -80,6 +82,38 @@ public class Main {
         System.out.println(juan);
         System.out.println(marta);
 
+    }
+
+    public static void EjercicioBits(){
+        StringBuilder sb = new StringBuilder("Tipo\t\tRango\n---------------------------\nint\t\t\t[");
+        sb.append(Integer.MIN_VALUE);
+        sb.append(",");
+        sb.append(Integer.MAX_VALUE);
+        sb.append("]\nlong\t\t[");
+        sb.append(Long.MIN_VALUE);
+        sb.append(",");
+        sb.append(Long.MAX_VALUE);
+        sb.append("]\nfloat\t\t[");
+        sb.append(Float.MIN_VALUE);
+        sb.append(",");
+        sb.append(Float.MAX_VALUE);
+        sb.append("]\ndouble\t\t[");
+        sb.append(Double.MIN_VALUE);
+        sb.append(",");
+        sb.append(Double.MAX_VALUE);
+        sb.append("]\nTipo\t\tBits\n---------------------------\nint\t\t\t");
+        sb.append(Integer.SIZE);
+        sb.append("\nlong\t\t");
+        sb.append(Long.SIZE);
+
+        System.out.println(sb);
+    }
+
+    public static void EjercicioMates(){
+        int j;
+        Scanner sc = new Scanner(System.in);
+        j = sc.nextInt();
+        System.out.println((int)(Math.ceil(Math.log10(j)/Math.log10(2))));
     }
 }
 
