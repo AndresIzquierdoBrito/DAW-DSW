@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AUT03_06_IzquierdoAndres_AuthMusicaAPI.Data;
 using AUT03_06_IzquierdoAndres_AuthMusicaAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ArtistsController : ControllerBase
     {
         private readonly ChinookContext _context;
@@ -32,6 +34,7 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IEnumerable<Artist>>> GetArtists()
@@ -72,6 +75,7 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Artist>> GetArtist(int id)
@@ -113,10 +117,12 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
         /// <returns>Sin contenido si la actualización es exitosa.</returns>
         // PUT: api/Artists/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin,Manager")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> PutArtist(int id, ArtistDTO artistDTO)
         {
@@ -163,8 +169,11 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
         /// <returns>Artista creado con un código 201 (Creado) y una ubicación que apunta al nuevo recurso.</returns>
         // POST: api/Artists
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [Authorize(Roles = "Admin,Manager")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -214,8 +223,11 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
         /// <returns>Sin contenido si la eliminación es exitosa.</returns>
         // DELETE: api/Artists/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin,Manager")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteArtist(int id)

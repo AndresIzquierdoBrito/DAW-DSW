@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AUT03_06_IzquierdoAndres_AuthMusicaAPI.Data;
 using AUT03_06_IzquierdoAndres_AuthMusicaAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class AlbumsController : ControllerBase
     {
@@ -31,6 +33,7 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
         // GET: api/Albums
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet]
@@ -80,6 +83,7 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Album>> GetAlbum(int id)
@@ -128,10 +132,12 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
         /// <returns>Sin contenido si la actualización es exitosa.</returns>
         // PUT: api/Albums/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> PutAlbum(int id, AlbumDTO albumDTO)
         {
@@ -188,8 +194,11 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
         /// <returns>Álbum creado con un código 201 (Creado) y una ubicación que apunta al nuevo recurso.</returns>
         // POST: api/Albums
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -245,8 +254,11 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
         /// <returns>Sin contenido si la eliminación es exitosa.</returns>
         // DELETE: api/Albums/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteAlbum(int id)
