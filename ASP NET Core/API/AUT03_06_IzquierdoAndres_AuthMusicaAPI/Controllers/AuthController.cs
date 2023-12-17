@@ -17,6 +17,12 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
 
+        /// <summary>
+        /// Constructor del controlador de autenticación.
+        /// </summary>
+        /// <param name="userManager">Gestor de usuarios.</param>
+        /// <param name="roleManager">Gestor de roles.</param>
+        /// <param name="configuration">Configuración de la aplicación.</param>
         public AuthController(
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
@@ -28,6 +34,11 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Endpoint para realizar el inicio de sesión de un usuario.
+        /// </summary>
+        /// <param name="user">DTO que contiene la información del usuario para el inicio de sesión.</param>
+        /// <returns>Token JWT si el inicio de sesión es exitoso.</returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -49,6 +60,11 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
             return Ok(await CreateToken(existingUser)); // Crea el token JWT para el usuario
         }
 
+        /// <summary>
+        /// Endpoint para registrar un nuevo usuario.
+        /// </summary>
+        /// <param name="user">DTO que contiene la información del nuevo usuario.</param>
+        /// <returns>Respuesta indicando el resultado del registro.</returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]

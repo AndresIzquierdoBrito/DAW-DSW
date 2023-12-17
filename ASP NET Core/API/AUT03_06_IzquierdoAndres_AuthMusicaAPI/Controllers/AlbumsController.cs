@@ -284,6 +284,68 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
         }
 
         /// <summary>
+        /// Busca uno o varios álbumes por su título.
+        /// </summary>
+        /// <param name="id">Título del álbum a buscar.</param>
+        /// <returns>Uno o varios álbumes si existen.</returns>
+        // GET: api/Albums/search
+        [HttpGet("search")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<IEnumerable<Album>>> SearchAlbums([FromQuery] string title)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(title))
+                {
+                    // Devuelve un error si el título de búsqueda está vacío o nulo
+                    ProblemDetails problemDetails = CreateProblemDetails(StatusCodes.Status400BadRequest, "Bad Request", "El título de búsqueda no puede estar vacío o nulo.");
+                    return BadRequest(problemDetails);
+                }
+
+                var albums = await _context.Albums
+                    .Include(a => a.Artist)
+                    .Where(a => a.Title == title)
+                    .OrderByDescending(a => a.Title)
+                    .Select(a => new
+                    {
+                        a.AlbumId,
+                        a.Title,
+                        Artist = new
+                        {
+                            a.ArtistId,
+                            a.Artist.Name
+                        },
+                        NoTracks = a.Tracks.Count,
+                        Tracks = a.Tracks.Select(t => new
+                        {
+                            t.TrackId,
+                            t.Name,
+                            Duration = TimeSpan.FromMilliseconds(t.Milliseconds).ToString(@"m\:ss"),
+                            Size = $"{(double)t.Bytes / (1024 * 1024):F2} MB"
+                        })
+                    })
+                    .ToListAsync();
+
+                if (albums == null || albums.Count == 0)
+                {
+                    // Devuelve un error si no se encuentran álbumes con el título proporcionado
+                    ProblemDetails problemDetails = CreateProblemDetails(StatusCodes.Status404NotFound, "No se ha encontrado", $"No se encontraron álbumes con el título: {title}.");
+                    return NotFound(problemDetails);
+                }
+
+                return Ok(albums);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Un error ha ocurrido mientras se recuperaban los datos de la base de datos." });
+            }
+        }
+
+        /// <summary>
         /// Genera un objeto ProblemDetails, código de estado, título y descripción, a través de los parametros.
         /// </summary>
         /// <param name="id">Código del estado, título y descripción.</param>

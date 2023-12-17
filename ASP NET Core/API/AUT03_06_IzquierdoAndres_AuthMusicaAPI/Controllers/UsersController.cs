@@ -28,6 +28,11 @@ namespace AUT03_06_IzquierdoAndres_AuthMusicaAPI.Controllers
             _configuration = configuration;
         }
 
+
+        /// <summary>
+        /// Obtiene la lista de usuarios.
+        /// </summary>
+        /// <returns>Lista de usuarios con roles.</returns>
         // GET: api/Users
         [HttpGet]
         [Authorize(Roles = "Admin")]
