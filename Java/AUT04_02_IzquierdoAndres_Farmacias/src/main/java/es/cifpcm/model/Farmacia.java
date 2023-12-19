@@ -14,8 +14,9 @@ public class Farmacia {
 
     float UTM_Y;
 
-    public Farmacia(String WEB, String LUNES, String TELEFONO, float UTM_X, float UTM_Y) {
+    public Farmacia(String WEB, String NOMBRE, String LUNES, String TELEFONO, float UTM_X, float UTM_Y) {
         this.WEB = WEB;
+        this.NOMBRE = NOMBRE;
         this.LUNES = LUNES;
         this.TELEFONO = TELEFONO;
         this.UTM_X = UTM_X;
@@ -24,7 +25,12 @@ public class Farmacia {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Nombre: " + this.NOMBRE +
+                "\nWeb: " + this.WEB +
+                "\nTeléfono: " + this.TELEFONO +
+                "\nHorario L :" + this.LUNES +
+                "\nUTM X: " + this.UTM_X +
+                "\nUTM Y: " + this.UTM_Y;
     }
 
     public String getWEB() {
