@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" th:href="@{/images/fav.ico}">
+    <title>Farmacias</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+
 <body>
-$END$
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand p-3" th:href="@{/}">Inicio</a>
+</nav>
+<div class="container mt-5">
+
+    <h1 class="text-center mb-4">Lista de farmacias</h1>
+    <p th:if="${isSearchResult}" class="alert alert-info">Resultados de la búsqueda de farmacias cercanas a la farmacia: <strong th:text="${farmaciaBusqueda}"></strong></p>
+    <table class="table table-striped table-hover mx-auto">
+        <thead class="table-dark table-group-divider">
+        <tr>
+            <th>Nombre</th>
+            <th>Web</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Barrio</th>
+            <th>Distrito</th>
+            <th>Horario</th>
+            <th>Longitud</th>
+            <th>Latitud</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="farmacia, stat : ${farmacias}">
+            <td th:text="${farmacia.getNOMBRE()}"></td>
+            <td><a th:href="@{${farmacia.getWEB()}}" th:text="${farmacia.getWEB()}" target="_blank"></a></td>
+            <td th:text="${farmacia.getTELEFONO()}"></td>
+            <td th:text="${farmacia.getDIRECCION()} + ', ' + ${farmacia.getCOD_POSTAL()}"></td>
+            <td th:text="${farmacia.getBARRIO()}"></td>
+            <td th:text="${farmacia.getDISTRITO()}"></td>
+            <td>
+                <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" th:data-bs-target="'#collapseTimetable' + ${stat.index}" aria-expanded="false" aria-controls="collapseTimetable">
+                    Ver Horario
+                </button>
+                <table th:id="'collapseTimetable' + ${stat.index}" class="collapse table">
+                    <tr><td>Lunes:</td><td th:text="${farmacia.getLUNES()}"></td></tr>
+                    <tr><td>Martes:</td><td th:text="${farmacia.getMARTES()}"></td></tr>
+                    <tr><td>Miércoles:</td><td th:text="${farmacia.getMIERCOLES()}"></td></tr>
+                    <tr><td>Jueves:</td><td th:text="${farmacia.getJUEVES()}"></td></tr>
+                    <tr><td>Viernes:</td><td th:text="${farmacia.getVIERNES()}"></td></tr>
+                    <tr><td>Sábado:</td><td th:text="${farmacia.getSABADO()}"></td></tr>
+                    <tr><td>Domingo:</td><td th:text="${farmacia.getDOMINGO()}"></td></tr>
+                </table>
+            </td>
+            <td th:text="${farmacia.getUTM_X()}"></td>
+            <td th:text="${farmacia.getUTM_Y()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer class="footer bg-light mt-5 py-3">
+    <div class="container text-center">
+        <span class="text-muted">2024 FarmaciasWeb - Andrés Eduardo Izquierdo Brito - CIFP César Manrique</span>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
+
 </html>
