@@ -29,9 +29,4 @@ public class IzquierdoAndresFarmaciasWebApplication extends SpringBootServletIni
 	public void onExit() {
 		pst.closeJson();
 	}
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(IzquierdoAndresFarmaciasWebApplication.class);
-	}
 }

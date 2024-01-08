@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Service
 public class PersitanceImplFarm implements Persistance{
 
-    final String FILESTORE_PATH =  System.getProperty("java.io.tmpdir") + "/IzquierdoAndres_farmacias.json";
+    final String FILESTORE_PATH =  System.getProperty("java.io.tmpdir") + "/farmacias_web.json";
 
     static ArrayList<Farmacia> memStore = new ArrayList<>();
 
@@ -83,7 +83,7 @@ public class PersitanceImplFarm implements Persistance{
             throw new IllegalStateException("memStore es null. Hubo un error en la ejecución del programa.");
         }
         Farmacia targetFarmacia = memStore.stream()
-                .filter(farmacia -> farmacia.getNOMBRE().equalsIgnoreCase(name))
+                .filter(farmacia -> farmacia.getNOMBRE().trim().equalsIgnoreCase(name))
                 .findFirst()
                 .orElse(null);
 
