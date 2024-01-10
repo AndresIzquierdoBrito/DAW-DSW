@@ -1,7 +1,6 @@
 package es.cifpcm.AndresNauzetFarmaciasWeb.models;
 
 public class Farmacia {
-
     String WEB;
     String NOMBRE;
     String LUNES;
