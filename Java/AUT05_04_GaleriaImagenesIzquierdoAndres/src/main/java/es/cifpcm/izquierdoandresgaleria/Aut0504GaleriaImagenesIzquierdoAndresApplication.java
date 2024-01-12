@@ -2,9 +2,10 @@ package es.cifpcm.izquierdoandresgaleria;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class Aut0504GaleriaImagenesIzquierdoAndresApplication {
+public class Aut0504GaleriaImagenesIzquierdoAndresApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(Aut0504GaleriaImagenesIzquierdoAndresApplication.class, args);

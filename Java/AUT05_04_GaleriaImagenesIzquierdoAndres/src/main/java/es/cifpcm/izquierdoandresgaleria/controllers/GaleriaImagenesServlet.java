@@ -1,7 +1,7 @@
 package es.cifpcm.izquierdoandresgaleria.controllers;
 
 import es.cifpcm.izquierdoandresgaleria.data.FileImageSystemService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +17,9 @@ import java.util.stream.Collectors;
 @Controller
 public class GaleriaImagenesServlet {
 
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+
+
     private final FileImageSystemService imageService;
 
     public GaleriaImagenesServlet(FileImageSystemService imageService) {
@@ -25,21 +28,21 @@ public class GaleriaImagenesServlet {
 
     @GetMapping("/")
     public String home() {
-        return "imageList";
+        return "redirect:imageManager";
     }
 
-    @PostMapping("/imageManager")
+    @PostMapping("imageManager")
     public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         try {
             imageService.saveImage(file);
-            redirectAttributes.addFlashAttribute("message", "You successfully uploaded " + file.getOriginalFilename() + "!");
+            redirectAttributes.addFlashAttribute("message", "¡Subiste con éxito " + file.getOriginalFilename() + "!");
         } catch (IOException e) {
             e.printStackTrace();
         }
         return "redirect:imageManager";
     }
 
-    @GetMapping("/imageManager")
+    @GetMapping("imageManager")
     public String listUploadedFiles(Model model) throws IOException {
         List<String> fileNames = imageService.loadAllImages().stream()
                 .map(path -> path.getFileName().toString())
