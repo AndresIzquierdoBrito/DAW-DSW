@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <title>Image Gallery</title>
+</head>
+<body>
+<h1>Image Gallery</h1>
+<form method="POST" enctype="multipart/form-data" action="/imageManager">
+    <input type="file" name="file" />
+    <button type="submit">Upload</button>
+</form>
+<div th:if="${message}">
+    <h2 th:text="${message}"></h2>
+</div>
+<div>
+    <ul>
+        <li th:each="file : ${files}">
+            <img th:src="@{'/images/' + ${file}}" th:alt="${file}" />
+        </li>
+    </ul>
+</div>
+</body>
+</html>
