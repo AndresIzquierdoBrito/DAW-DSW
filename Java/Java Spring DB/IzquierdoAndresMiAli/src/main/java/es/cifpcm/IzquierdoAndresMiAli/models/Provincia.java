@@ -15,16 +15,16 @@ public class Provincia implements Serializable {
 
     @Id
     @Column(name = "id_provincia", nullable = false)
-    private Integer idProvincia;
+    private Short idProvincia;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    public void setIdProvincia(Integer idProvincia) {
+    public void setIdProvincia(Short idProvincia) {
         this.idProvincia = idProvincia;
     }
 
-    public Integer getIdProvincia() {
+    public Short getIdProvincia() {
         return idProvincia;
     }
 

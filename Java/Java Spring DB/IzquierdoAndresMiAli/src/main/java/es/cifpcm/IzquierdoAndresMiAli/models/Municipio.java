@@ -16,7 +16,7 @@ public class Municipio implements Serializable {
     private Integer idMunicipio;
 
     @Column(name = "id_provincia", nullable = false)
-    private Integer idProvincia;
+    private Short idProvincia;
 
     @Column(name = "cod_municipio", nullable = false)
     private Integer codMunicipio;
@@ -38,11 +38,11 @@ public class Municipio implements Serializable {
         return idMunicipio;
     }
 
-    public void setIdProvincia(Integer idProvincia) {
+    public void setIdProvincia(Short idProvincia) {
         this.idProvincia = idProvincia;
     }
 
-    public Integer getIdProvincia() {
+    public Short getIdProvincia() {
         return idProvincia;
     }
 
