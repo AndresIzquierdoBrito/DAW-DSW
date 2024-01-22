@@ -28,6 +28,11 @@ public class ProductofferService {
         return productofferRepository.findAll();
     }
 
+    public List<Productoffer> getProductsByMunicipio(Integer municipioId){
+        return productofferRepository.findAll();
+    }
+
+
     public void delete(Integer id) {
         productofferRepository.deleteById(id);
     }

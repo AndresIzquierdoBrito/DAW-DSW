@@ -8,19 +8,18 @@
     <ul th:each="product : ${products}">
         <li th:text="${product.getProductName()}"></li>
     </ul>
-    <form action="/updateProductList" method="post">
+    <form action="IzquierdoAndresMiAli/productos/update" method="get">
         <label>
             Provincia
-            <select name="provincia" onchange="this.form.submit()">
-                <option th:each="provincia : ${pronvicias}" th:value="${municipio.id}" th:text="${state.name}"></option>
+            <select name="provinciaId" onchange="this.form.submit()" id="idProvincia">
+                <option th:each="provincia : ${allProvincias}" th:value="${provincia.idProvincia}" th:text="${provincia.nombre}"></option>
             </select>
         </label>
 
         <label>
             Municipio
-            <select name="municipio" onchange="this.form.submit()">
-                <option th:each="municipio : ${municipios}" th:value="${city.id}" th:text="${city.name}"></option>
-
+            <select name="municipioId" onchange="this.form.submit()" th:field="municipioId" id="idMunicipio">
+                <option th:each="municipio : ${municipiosByProvincia}" th:value="${municipio.idMunicipio}" th:text="${municipio.nombre}"></option>
             </select>
         </label>
     </form>

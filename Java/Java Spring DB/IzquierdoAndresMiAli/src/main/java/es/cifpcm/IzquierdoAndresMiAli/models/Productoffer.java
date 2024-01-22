@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "productoffer", indexes = {
-        @Index(name = "idx_productoffer_product_id", columnList = "product_id")
+@Index(name = "idx_productoffer_product_id", columnList = "product_id")
 })
 public class Productoffer implements Serializable {
 

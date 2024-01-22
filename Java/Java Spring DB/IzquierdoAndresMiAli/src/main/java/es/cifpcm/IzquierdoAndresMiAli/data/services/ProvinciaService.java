@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -19,6 +20,12 @@ public class ProvinciaService {
         Provincia original = requireOne(id);
         return toDTO(original);
     }
+
+    public List<Provincia> getAllProvincias(){
+        return provinciasRepository.findAll();
+    }
+
+
 
     public Page<Provincia> query(Provincia provincia) {
         throw new UnsupportedOperationException();

@@ -18,9 +18,6 @@ public class Municipio implements Serializable {
     @Column(name = "id_provincia", nullable = false)
     private Integer idProvincia;
 
-    /**
-     * Código de muncipio DENTRO de la provincia, campo no único
-     */
     @Column(name = "cod_municipio", nullable = false)
     private Integer codMunicipio;
 
@@ -49,30 +46,18 @@ public class Municipio implements Serializable {
         return idProvincia;
     }
 
-    /**
-     * Código de muncipio DENTRO de la provincia, campo no único
-     */
     public void setCodMunicipio(Integer codMunicipio) {
         this.codMunicipio = codMunicipio;
     }
 
-    /**
-     * Código de muncipio DENTRO de la provincia, campo no único
-     */
     public Integer getCodMunicipio() {
         return codMunicipio;
     }
 
-    /**
-     * Digito Control. El INE no revela cómo se calcula, secreto nuclear.
-     */
     public void setDc(Integer dc) {
         this.dc = dc;
     }
 
-    /**
-     * Digito Control. El INE no revela cómo se calcula, secreto nuclear.
-     */
     public Integer getDc() {
         return dc;
     }

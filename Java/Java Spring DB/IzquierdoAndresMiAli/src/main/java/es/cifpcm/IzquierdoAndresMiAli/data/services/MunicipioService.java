@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -18,6 +19,10 @@ public class MunicipioService {
     public Municipio getById(Integer id) {
         Municipio original = requireOne(id);
         return toDTO(original);
+    }
+
+    public List<Municipio> getMunicipiosByProvinciaId(Integer id){
+        return municipiosRepository.findAll();
     }
 
     public Page<Municipio> query(Municipio municipio) {
