@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label for="idMunicipio">Municipio</label>
                         <select name="municipioId"  th:field="*{idMunicipio}" id="idMunicipio" required="required">
-                            <option selected="selected" disabled="disabled">Elegir municipio...</option>
+                            <option selected disabled="disabled" value="">Elegir municipio...</option>
                             <option th:each="municipio : ${municipios}" th:value="${municipio.getIdMunicipio()}" th:text="${municipio.getNombre()}"></option>
                         </select>
                     </div>

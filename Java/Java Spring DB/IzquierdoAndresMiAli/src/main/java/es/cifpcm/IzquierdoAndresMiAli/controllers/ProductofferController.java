@@ -95,7 +95,7 @@ public class ProductofferController {
                               @RequestParam("image") MultipartFile file) throws IOException {
         imageService.saveImage(file);
         product.setProductPicture(file.getOriginalFilename());
-
+        productService.save(product);
 
         return "inicio";
     }

@@ -54,6 +54,10 @@ public class Productoffer implements Serializable {
         return idMunicipio;
     }
 
+    public void setIdMunicipio(Integer idMunicipio) {
+        this.idMunicipio = idMunicipio;
+    }
+
     public String getProductName() {
         return productName;
     }
