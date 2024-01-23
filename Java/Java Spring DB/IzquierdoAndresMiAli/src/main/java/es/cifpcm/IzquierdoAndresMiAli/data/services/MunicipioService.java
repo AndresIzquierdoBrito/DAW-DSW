@@ -21,6 +21,9 @@ public class MunicipioService {
         return toDTO(original);
     }
 
+    public List<Municipio> getAllMunicipios() {
+        return municipiosRepository.findAll();
+    }
     public List<Municipio> getMunicipiosByProvinciaId(Integer id){
         return municipiosRepository.findAll();
     }
