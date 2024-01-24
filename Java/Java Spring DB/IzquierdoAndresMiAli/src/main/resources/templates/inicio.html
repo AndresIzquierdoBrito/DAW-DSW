@@ -36,7 +36,22 @@
     <div class="bg-circle-3 bg-circle"></div>
     <div class="bg-circle-4 bg-circle"></div>
 </header>
-<footer th:fragment="header" class="py-3 bg-black">
+<section id="scroll" class="my-3">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle" th:src="@{/assets/muebles.jpg}" alt="..." /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Tu destino para muebles.</h2>
+                    <p>Transforma tu espacio con nuestros exquisitos muebles, diseñados para brindar comodidad y estilo inigualables. Desde sofisticados sofás hasta mesas funcionales, cada pieza está meticulosamente elaborada para satisfacer tus más altas expectativas de calidad y diseño.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:fragment="header" class="py-3 bg-black mt-5">
     <div class="container px-5"><p class="m-0 text-center text-white small">Andrés Eduardo Izquierdo Brito &copy; CIFP César Manrique 2024</p></div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
