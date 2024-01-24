@@ -8,12 +8,17 @@
                     <h5 class="card-title" th:text="${product.getProductName()}"></h5>
                     <p class="card-text">Precio: <span th:text="${product.getProductPrice()}"></span>&euro;</p>
                     <p class="card-text">Stock: <span th:text="${product.getProductStock()}"></span></p>
-                    <button class="btn btn-primary">Añadir al carrito</button>
-<!--                    <button class="btn btn-primary" onclick="addToCart(${product.getId()})">Add to Cart</button>-->
+                    <form th:action="@{/productos/addToCart}" method="post">
+                        <input type="hidden" name="productId" th:value="${product.getProductId()}">
+                        <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+                    </form>
                     <div class="mt-2">
-                        <a href="#" class="btn btn-secondary btn-sm">Ver detalles</a>
-                        <a href="#" class="btn btn-info btn-sm">Editar</a>
-                        <a href="#" class="btn btn-danger btn-sm" onclick="deleteProduct(${product.getId()})">Borrar</a>
+                        <a href="#" class="btn btn-dark btn-sm">Ver detalles</a>
+                        <a href="#" class="btn btn-dark btn-sm">Editar</a>
+                        <form th:action="@{'/productos/delete/' + ${product.getProductId()}}" method="post" class="mt-2">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estas seguro que quieres borrar este producto?')">Borrar</button>
+                        </form>
                     </div>
                 </div>
             </div>

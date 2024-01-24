@@ -79,10 +79,11 @@
                             <label for="productPrice">Precio</label>
                             <input type="text" class="form-control" id="productPrice" name="productPrice"
                                    placeholder="Precio del producto" required>
+                            <small class="form-text text-danger" th:each="error : ${#fields.errors('productPrice')}" th:text="${error}"></small>
                         </div>
                         <div class="form-group">
                             <label for="idMunicipio">Municipio</label>
-                            <select name="municipioId"  th:field="*{idMunicipio}" id="idMunicipio" required="required">
+                            <select name="municipioId"  th:field="*{idMunicipio}" id="idMunicipio" required="required" class="form-select">
                                 <option selected disabled="disabled" value="">Elegir municipio...</option>
                                 <option th:each="municipio : ${municipios}" th:value="${municipio.getIdMunicipio()}" th:text="${municipio.getNombre()}"></option>
                             </select>
@@ -90,7 +91,7 @@
                         <div class="form-group">
                             <label for="productStock">Cantidad en stock</label>
                             <input type="text" class="form-control" id="productStock" name="productStock"
-                                   placeholder="Cantidad de stock inicial" required>
+                                   placeholder="Cantidad de stock inicial" required min="0">
                         </div>
                         <div class="form-group my-3">
                             <label for="imageFile">Imagen</label>

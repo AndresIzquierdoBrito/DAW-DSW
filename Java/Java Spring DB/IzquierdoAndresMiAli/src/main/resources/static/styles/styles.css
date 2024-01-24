@@ -93,6 +93,11 @@ body {
   min-width: 90vh;
 }
 
+.create-product {
+  position: absolute;
+  top: 12vh;
+  left: 5vw;
+}
 
 hr {
   margin: 1rem 0;

@@ -1,6 +1,7 @@
 package es.cifpcm.IzquierdoAndresMiAli.controllers;
 
 import es.cifpcm.IzquierdoAndresMiAli.data.services.MunicipioService;
+import es.cifpcm.IzquierdoAndresMiAli.data.services.PedidoService;
 import es.cifpcm.IzquierdoAndresMiAli.data.services.ProductofferService;
 import es.cifpcm.IzquierdoAndresMiAli.data.services.ProvinciaService;
 import es.cifpcm.IzquierdoAndresMiAli.data.services.impl.ImageService;
@@ -11,6 +12,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,21 +31,23 @@ import java.util.Optional;
 @RequestMapping("/productos")
 public class ProductofferController {
 
-    public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/uploads";
-
+    public static ArrayList<Productoffer> carrito = new ArrayList<Productoffer>();
     private final ProductofferService productService;
     private final ProvinciaService provinciaService;
     private final MunicipioService municipioService;
     private final ImageService imageService;
+    private final PedidoService pedidoService;
     @Autowired
     public ProductofferController(ProductofferService productservice,
                                   ProvinciaService provinciaService,
                                   MunicipioService municipioService,
-                                  ImageService imageService){
+                                  ImageService imageService,
+                                  PedidoService pedidoService){
         this.productService = productservice;
         this.provinciaService = provinciaService;
         this.municipioService = municipioService;
         this.imageService = imageService;
+        this.pedidoService = pedidoService;
     }
 
     @GetMapping
@@ -50,10 +55,14 @@ public class ProductofferController {
                               @RequestParam(value="municipioId", required = false) Short municipioId,
                               Model model) {
         List<Provincia> provincias = provinciaService.getAllProvincias();
-        List<Productoffer> products = null;
+        List<Productoffer> products;
         model.addAttribute("provincias", provincias);
         model.addAttribute("provinciaId", provinciaId);
         model.addAttribute("municipioId", municipioId);
+
+        double total = carrito.stream().mapToDouble(product -> product.getProductPrice()).sum();
+        model.addAttribute("total", total);
+        model.addAttribute("carrito", carrito);
 
         if(provinciaId != null){
             List<Municipio> municipios = municipioService.getMunicipiosByProvinciaId(provinciaId);
@@ -69,6 +78,13 @@ public class ProductofferController {
         return "producto";
     }
 
+    @PostMapping("/addToCart")
+    public String addToCart(@RequestParam("productId") Integer productId) {
+        Productoffer product = productService.getById(productId);
+        carrito.add(product);
+        return "redirect:/productos";
+    }
+
     @GetMapping("/crear")
     public String displayUploadForm(Model model) {
         List<Municipio> municipios = municipioService.getAllMunicipios();
@@ -79,13 +95,23 @@ public class ProductofferController {
 
     @PostMapping("/crear")
     public String uploadProduct(Model model,
-                              @ModelAttribute("product") Productoffer product,
-                              @RequestParam("image") MultipartFile file) throws IOException {
+                                @Validated @ModelAttribute("product") Productoffer product,
+                                @RequestParam("image") MultipartFile file,
+                                BindingResult result) {
+        if (result.hasErrors()) {
+            return "create";
+        }
         imageService.saveImage(file);
         product.setProductPicture(file.getOriginalFilename());
         productService.save(product);
 
-        return "redirect:/";
+        return "redirect:/productos";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String delete(@Valid @NotNull @PathVariable("id") Integer id) {
+        productService.delete(id);
+        return "redirect:/productos";
     }
 }
 

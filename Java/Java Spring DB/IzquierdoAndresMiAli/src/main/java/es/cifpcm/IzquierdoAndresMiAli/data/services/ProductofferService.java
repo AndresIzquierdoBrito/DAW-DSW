@@ -2,19 +2,21 @@ package es.cifpcm.IzquierdoAndresMiAli.data.services;
 
 import es.cifpcm.IzquierdoAndresMiAli.data.repositories.ProductofferRepository;
 import es.cifpcm.IzquierdoAndresMiAli.models.Productoffer;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
-@Service
+@Service @Validated
 public class ProductofferService {
 
     @Autowired
     private ProductofferRepository productofferRepository;
 
-    public Integer save(Productoffer vO) {
+    public Integer save(@Valid Productoffer vO) {
         Productoffer bean = new Productoffer();
         BeanUtils.copyProperties(vO, bean);
         bean = productofferRepository.save(bean);
