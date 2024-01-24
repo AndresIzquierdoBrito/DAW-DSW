@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="JpaBuddyIdeaProjectConfig">
-    <option name="defaultUnitInitialized" value="true" />
-    <option name="renamerInitialized" value="true" />
-    <option name="reverseEngineeringLastDbConnectionId" value="030f55de-6b63-481f-aa32-7f19d6f96ee7__animaldb" />
-    <option name="reLastEntityCreationPackage" value="src/main/java/es/cifpcm/demoDB/models" />
-  </component>
-</project>

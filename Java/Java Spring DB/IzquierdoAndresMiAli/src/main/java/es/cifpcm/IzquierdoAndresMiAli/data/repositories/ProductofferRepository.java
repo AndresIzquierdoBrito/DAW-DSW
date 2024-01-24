@@ -12,4 +12,8 @@ public interface ProductofferRepository extends JpaRepository<Productoffer, Inte
     @Query("select p from Productoffer p where p.productId = ?1")
     Productoffer findByProductId(Integer productId);
 
+    @Query("SELECT p FROM Productoffer p JOIN p.municipio m JOIN m.provincia pr WHERE pr.idProvincia = :provinciaId")
+    List<Productoffer> findByProvinciaId(Short provinciaId);
+
+    List<Productoffer> findByIdMunicipio(Integer idMunicipio);
 }

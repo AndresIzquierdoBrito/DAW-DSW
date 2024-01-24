@@ -16,20 +16,12 @@ public class MunicipioService {
     @Autowired
     private MunicipiosRepository municipiosRepository;
 
-    public Municipio getById(Integer id) {
-        Municipio original = requireOne(id);
-        return toDTO(original);
-    }
-
     public List<Municipio> getAllMunicipios() {
         return municipiosRepository.findAll();
     }
-    public List<Municipio> getMunicipiosByProvinciaId(Integer id){
-        return municipiosRepository.findAll();
-    }
 
-    public Page<Municipio> query(Municipio municipio) {
-        throw new UnsupportedOperationException();
+    public List<Municipio> getMunicipiosByProvinciaId(Short id){
+        return municipiosRepository.findByIdProvincia(id);
     }
 
     private Municipio toDTO(Municipio original) {

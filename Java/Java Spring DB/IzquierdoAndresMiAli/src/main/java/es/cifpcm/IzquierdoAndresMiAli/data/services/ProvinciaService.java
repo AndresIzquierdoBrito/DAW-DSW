@@ -26,11 +26,6 @@ public class ProvinciaService {
     }
 
 
-
-    public Page<Provincia> query(Provincia provincia) {
-        throw new UnsupportedOperationException();
-    }
-
     private Provincia toDTO(Provincia original) {
         Provincia bean = new Provincia();
         BeanUtils.copyProperties(original, bean);

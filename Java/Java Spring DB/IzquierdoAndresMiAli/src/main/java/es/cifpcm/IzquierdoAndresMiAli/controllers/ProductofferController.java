@@ -21,6 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 @Validated
 @Controller
@@ -45,38 +46,25 @@ public class ProductofferController {
     }
 
     @GetMapping
-    public String getAllProducts(Model model) {
-        List<Productoffer> products = productService.getAllProductOffers();
-        List<Provincia> allProvincias = provinciaService.getAllProvincias();
-
-        model.addAttribute("products", products);
-        model.addAttribute("allProvincias", allProvincias);
-
-        return "producto";
-    }
-
-    @GetMapping("/update")
-    public String updateProductList(Model model,
-                                    @RequestParam(required = false, value = "provinciaId") Integer provinciaId,
-                                    @RequestParam(required = false) Integer municipioId) {
-        List<Provincia> allProvincias = provinciaService.getAllProvincias();
-        List<Municipio> municipiosByProvincia = null;
+    public String getProducts(@RequestParam(value="provinciaId", required = false) Short provinciaId,
+                              @RequestParam(value="municipioId", required = false) Short municipioId,
+                              Model model) {
+        List<Provincia> provincias = provinciaService.getAllProvincias();
         List<Productoffer> products = null;
+        model.addAttribute("provincias", provincias);
+        model.addAttribute("provinciaId", provinciaId);
+        model.addAttribute("municipioId", municipioId);
 
-        if (provinciaId != null) {
-            municipiosByProvincia = municipioService.getMunicipiosByProvinciaId(provinciaId);
-            products = productService.getAllProductOffers();
+        if(provinciaId != null){
+            List<Municipio> municipios = municipioService.getMunicipiosByProvinciaId(provinciaId);
+            Provincia selectedProvincia = provinciaService.getById(Integer.valueOf(provinciaId));
+            model.addAttribute("municipios", municipios);
+            model.addAttribute("selectedProvincia", selectedProvincia);
+            products = (municipioId == null) ? productService.getProdutcsByProvincia(provinciaId) : productService.getProductsByMunicipio(Integer.valueOf(municipioId));
         }
-        else if (municipioId != null) {
-            municipiosByProvincia = municipioService.getMunicipiosByProvinciaId(provinciaId);
-            //products = productService.getProductsByMunicipio(municipioId);
+        else
             products = productService.getAllProductOffers();
-        } else {
-            products = productService.getAllProductOffers();
-        }
 
-        model.addAttribute("allProvincias", allProvincias);
-        model.addAttribute("municipiosByProvincia", municipiosByProvincia);
         model.addAttribute("products", products);
         return "producto";
     }
@@ -97,28 +85,8 @@ public class ProductofferController {
         product.setProductPicture(file.getOriginalFilename());
         productService.save(product);
 
-        return "inicio";
+        return "redirect:/";
     }
-
-    @DeleteMapping("/{id}")
-    public void delete(@Valid @NotNull @PathVariable("id") Integer id) {
-        productService.delete(id);
-    }
-
-    @PutMapping("/{id}")
-    public void update(@Valid @NotNull @PathVariable("id") Integer id,
-                       @Valid @RequestBody Productoffer productoffer) {
-        productService.update(id, productoffer);
-    }
-
-    @GetMapping("/{id}")
-    public Productoffer getById(@Valid @NotNull @PathVariable("id") Integer id) {
-        return productService.getById(id);
-
-    }
-
-//    @GetMapping
-//    public Page<ProductofferDTO> query(@Valid Productoffer productoffer) {
-//        return productofferService.query(productoffer);
-//    }
 }
+
+

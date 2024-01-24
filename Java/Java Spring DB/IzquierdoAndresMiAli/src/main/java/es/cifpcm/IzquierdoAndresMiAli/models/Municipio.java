@@ -21,6 +21,10 @@ public class Municipio implements Serializable {
     @Column(name = "cod_municipio", nullable = false)
     private Integer codMunicipio;
 
+    @ManyToOne
+    @JoinColumn(name = "id_provincia", nullable = false, insertable = false, updatable = false)
+    private Provincia provincia;
+
     /**
      * Digito Control. El INE no revela cómo se calcula, secreto nuclear.
      */

@@ -2,14 +2,11 @@ package es.cifpcm.IzquierdoAndresMiAli.data.services;
 
 import es.cifpcm.IzquierdoAndresMiAli.data.repositories.ProductofferRepository;
 import es.cifpcm.IzquierdoAndresMiAli.models.Productoffer;
-import es.cifpcm.IzquierdoAndresMiAli.models.ProductofferDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class ProductofferService {
@@ -29,9 +26,12 @@ public class ProductofferService {
     }
 
     public List<Productoffer> getProductsByMunicipio(Integer municipioId){
-        return productofferRepository.findAll();
+        return productofferRepository.findByIdMunicipio(municipioId);
     }
 
+    public List<Productoffer> getProdutcsByProvincia(Short municipioId){
+        return productofferRepository.findByProvinciaId(municipioId);
+    }
 
     public void delete(Integer id) {
         productofferRepository.deleteById(id);
@@ -45,10 +45,6 @@ public class ProductofferService {
 
     public Productoffer getById(Integer id) {
         return requireOne(id);
-    }
-
-    public Page<ProductofferDTO> query(Productoffer productoffer) {
-        throw new UnsupportedOperationException();
     }
 
     private Productoffer toDTO(Productoffer original) {

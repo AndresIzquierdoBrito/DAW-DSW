@@ -1,11 +1,9 @@
 package es.cifpcm.IzquierdoAndresMiAli.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "provincias")
@@ -19,6 +17,9 @@ public class Provincia implements Serializable {
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
+
+    @OneToMany(mappedBy = "provincia")
+    private List<Municipio> municipios;
 
     public void setIdProvincia(Short idProvincia) {
         this.idProvincia = idProvincia;
@@ -36,6 +37,9 @@ public class Provincia implements Serializable {
         return nombre;
     }
 
+    public List<Municipio> getMunicipios (Short idProvincia) {
+        return this.municipios;
+    }
     @Override
     public String toString() {
         return "Provincia{" +

@@ -34,6 +34,10 @@ public class Productoffer implements Serializable {
     @Column(name = "product_stock", nullable = false)
     private Integer productStock;
 
+    @ManyToOne
+    @JoinColumn(name = "id_municipio", nullable = false, insertable = false, updatable = false, referencedColumnName = "id_municipio")
+    private Municipio municipio;
+
     public Productoffer(){
 
     }
