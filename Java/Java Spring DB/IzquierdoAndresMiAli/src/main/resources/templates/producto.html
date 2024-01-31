@@ -12,7 +12,7 @@
 </head>
 <body>
 <header th:insert="inicio.html :: nav" class="pb-5"> </header>
-<a th:href="@{productos/crear}" class="btn btn-primary create-product">Create Product</a>
+<a th:href="@{productos/crear}" class="btn btn-primary create-product">Crear producto</a>
 <main class="mt-5 mx-5">
     <div class="mb-3" th:if="${carrito.size() != 0}">
         <div th:replace="fragments/cartFragment :: cartFragment(${carrito}, ${total})"></div>
@@ -23,7 +23,7 @@
                 <form th:action="@{/productos}"  method="get">
                     <div class="mb-3" th:if="${provinciaId}">
                         <label for="provincia" class="form-label" >Provincia</label>
-                        <select name="provinciaId" id="provincia"  th:onchange="'this.form.submit()'" class="form-select">
+                        <select name="provinciaId" id="provincia" th:onchange="'this.form.submit()'" class="form-select">
                                 <option th:each="provincia : ${provincias}" th:value="${provincia.getIdProvincia()}"
                                         th:text="${provincia.getNombre()}" th:selected="${provincia.getIdProvincia() == provinciaId}"></option>
                         </select>

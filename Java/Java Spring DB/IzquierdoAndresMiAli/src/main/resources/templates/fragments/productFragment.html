@@ -10,7 +10,8 @@
                     <p class="card-text">Stock: <span th:text="${product.getProductStock()}"></span></p>
                     <form th:action="@{/productos/addToCart}" method="post">
                         <input type="hidden" name="productId" th:value="${product.getProductId()}">
-                        <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+                        <button th:if="${product.getProductStock() > 0}" type="submit" class="btn btn-primary">Añadir al carrito</button>
+                        <button th:if="${product.getProductStock() == 0}" type="submit" class="btn btn-primary" disabled>Añadir al carrito</button>
                     </form>
                     <div class="mt-2">
                         <a href="#" class="btn btn-dark btn-sm">Ver detalles</a>

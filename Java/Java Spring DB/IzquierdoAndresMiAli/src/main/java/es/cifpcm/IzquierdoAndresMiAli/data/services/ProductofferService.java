@@ -4,7 +4,6 @@ import es.cifpcm.IzquierdoAndresMiAli.data.repositories.ProductofferRepository;
 import es.cifpcm.IzquierdoAndresMiAli.models.Productoffer;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -13,14 +12,15 @@ import java.util.List;
 @Service @Validated
 public class ProductofferService {
 
-    @Autowired
-    private ProductofferRepository productofferRepository;
+    private final ProductofferRepository productofferRepository;
 
-    public Integer save(@Valid Productoffer vO) {
+    public ProductofferService(ProductofferRepository productofferRepository) {
+        this.productofferRepository = productofferRepository;
+    }
+
+    public void save(@Valid Productoffer vO) {
         Productoffer bean = new Productoffer();
         BeanUtils.copyProperties(vO, bean);
-        bean = productofferRepository.save(bean);
-        return bean.getProductId();
     }
 
     public List<Productoffer> getAllProductOffers(){
@@ -47,12 +47,6 @@ public class ProductofferService {
 
     public Productoffer getById(Integer id) {
         return requireOne(id);
-    }
-
-    private Productoffer toDTO(Productoffer original) {
-        Productoffer bean = new Productoffer();
-        BeanUtils.copyProperties(original, bean);
-        return bean;
     }
 
     private Productoffer requireOne(Integer id) {

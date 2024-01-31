@@ -3,8 +3,6 @@ package es.cifpcm.IzquierdoAndresMiAli.data.services;
 import es.cifpcm.IzquierdoAndresMiAli.data.repositories.MunicipiosRepository;
 import es.cifpcm.IzquierdoAndresMiAli.models.Municipio;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +11,11 @@ import java.util.NoSuchElementException;
 @Service
 public class MunicipioService {
 
-    @Autowired
-    private MunicipiosRepository municipiosRepository;
+    private final MunicipiosRepository municipiosRepository;
+
+    public MunicipioService(MunicipiosRepository municipiosRepository) {
+        this.municipiosRepository = municipiosRepository;
+    }
 
     public List<Municipio> getAllMunicipios() {
         return municipiosRepository.findAll();

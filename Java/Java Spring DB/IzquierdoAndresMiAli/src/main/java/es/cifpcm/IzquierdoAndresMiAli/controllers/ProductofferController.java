@@ -1,7 +1,6 @@
 package es.cifpcm.IzquierdoAndresMiAli.controllers;
 
 import es.cifpcm.IzquierdoAndresMiAli.data.services.MunicipioService;
-import es.cifpcm.IzquierdoAndresMiAli.data.services.PedidoService;
 import es.cifpcm.IzquierdoAndresMiAli.data.services.ProductofferService;
 import es.cifpcm.IzquierdoAndresMiAli.data.services.ProvinciaService;
 import es.cifpcm.IzquierdoAndresMiAli.data.services.impl.ImageService;
@@ -17,37 +16,29 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Validated
 @Controller
 @RequestMapping("/productos")
 public class ProductofferController {
 
-    public static ArrayList<Productoffer> carrito = new ArrayList<Productoffer>();
+    public static ArrayList<Productoffer> carrito = new ArrayList<>();
     private final ProductofferService productService;
     private final ProvinciaService provinciaService;
     private final MunicipioService municipioService;
     private final ImageService imageService;
-    private final PedidoService pedidoService;
+
     @Autowired
     public ProductofferController(ProductofferService productservice,
                                   ProvinciaService provinciaService,
                                   MunicipioService municipioService,
-                                  ImageService imageService,
-                                  PedidoService pedidoService){
+                                  ImageService imageService){
         this.productService = productservice;
         this.provinciaService = provinciaService;
         this.municipioService = municipioService;
         this.imageService = imageService;
-        this.pedidoService = pedidoService;
     }
 
     @GetMapping
@@ -60,7 +51,7 @@ public class ProductofferController {
         model.addAttribute("provinciaId", provinciaId);
         model.addAttribute("municipioId", municipioId);
 
-        double total = carrito.stream().mapToDouble(product -> product.getProductPrice()).sum();
+        double total = carrito.stream().mapToDouble(Productoffer::getProductPrice).sum();
         model.addAttribute("total", total);
         model.addAttribute("carrito", carrito);
 
@@ -81,7 +72,10 @@ public class ProductofferController {
     @PostMapping("/addToCart")
     public String addToCart(@RequestParam("productId") Integer productId) {
         Productoffer product = productService.getById(productId);
+        if (product.getProductStock() == 0)
+            return "redirect:/productos";
         carrito.add(product);
+        product.setProductStock(product.getProductStock() - 1);
         return "redirect:/productos";
     }
 
@@ -94,8 +88,7 @@ public class ProductofferController {
     }
 
     @PostMapping("/crear")
-    public String uploadProduct(Model model,
-                                @Validated @ModelAttribute("product") Productoffer product,
+    public String uploadProduct(@Validated @ModelAttribute("product") Productoffer product,
                                 @RequestParam("image") MultipartFile file,
                                 BindingResult result) {
         if (result.hasErrors()) {

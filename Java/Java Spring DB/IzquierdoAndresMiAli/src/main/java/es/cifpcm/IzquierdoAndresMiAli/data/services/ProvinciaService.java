@@ -3,8 +3,6 @@ package es.cifpcm.IzquierdoAndresMiAli.data.services;
 import es.cifpcm.IzquierdoAndresMiAli.data.repositories.ProvinciasRepository;
 import es.cifpcm.IzquierdoAndresMiAli.models.Provincia;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +11,11 @@ import java.util.NoSuchElementException;
 @Service
 public class ProvinciaService {
 
-    @Autowired
-    private ProvinciasRepository provinciasRepository;
+    private final ProvinciasRepository provinciasRepository;
+
+    public ProvinciaService(ProvinciasRepository provinciasRepository) {
+        this.provinciasRepository = provinciasRepository;
+    }
 
     public Provincia getById(Integer id) {
         Provincia original = requireOne(id);

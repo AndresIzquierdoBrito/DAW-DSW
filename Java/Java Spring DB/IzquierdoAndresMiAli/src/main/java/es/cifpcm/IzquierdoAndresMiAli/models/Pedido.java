@@ -1,6 +1,9 @@
 package es.cifpcm.IzquierdoAndresMiAli.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -27,7 +30,7 @@ public class Pedido implements Serializable {
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
 
-    @ManyToMany
+    @ManyToMany @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(
             name = "pedidos_productoffer",
             joinColumns = @JoinColumn(name = "id_pedido"),
