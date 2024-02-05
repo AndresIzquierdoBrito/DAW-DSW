@@ -8,7 +8,7 @@
 </head>
 <body>
 <header th:insert="~{/index_izquierdo.html :: nav}"> </header>
-<main class="container py-4">
+<main class="container py-4" style="min-height: 85vh">
     <h1 th:text="'Discos: ' + ${artist.getName()}"></h1>
     <div class="table-responsive">
         <table class="table">
