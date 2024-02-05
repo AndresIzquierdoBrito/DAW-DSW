@@ -1,10 +1,11 @@
 package es.cifpcm.IzquierdoAndresMiAli.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -16,11 +17,23 @@ public class User implements Serializable {
     @Column(name = "user_id", nullable = false)
     private Integer userId;
 
-    @Column(name = "user_name", nullable = false)
+    @Column(name = "user_name", nullable = false, unique = true)
     private String userName;
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(
+            name = "users_groups",
+            joinColumns = @JoinColumn(name = "user_name"),
+            inverseJoinColumns = @JoinColumn(name = "group_id")
+    )
+    private List<Productoffer> groups;
+
+    public List<Productoffer> getGroups() {
+        return groups;
+    }
 
     public Integer getUserId() {
         return userId;

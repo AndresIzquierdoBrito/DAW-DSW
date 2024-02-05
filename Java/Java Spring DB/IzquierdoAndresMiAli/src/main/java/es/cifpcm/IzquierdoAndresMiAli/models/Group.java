@@ -2,6 +2,7 @@ package es.cifpcm.IzquierdoAndresMiAli.models;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "groups")
@@ -19,6 +20,9 @@ public class Group implements Serializable {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToMany(mappedBy = "groups")
+    private List<User> users;
 
     public Integer getGroupId() {
         return groupId;

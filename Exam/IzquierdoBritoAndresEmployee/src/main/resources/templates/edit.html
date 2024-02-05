@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class="bg-light" >
+<header th:insert="~{index.html :: nav}"> </header>
+<main class="container mt-5" style="min-height: 85vh">
+    <h1 class="text-center">Edit Employee</h1>
+    <form id="employeeForm" method="post" th:action="@{/employee/{id}/edit(id=${employee.getId()})}" class="needs-validation" novalidate>
+        <input type="hidden" name="employeeId" th:value="${employee.getId()}">
+
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" th:value="${employee.getFirstName()}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" th:value="${employee.getLastName()}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" th:value="${employee.getEmail()}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" th:value="${employee.getPhoneNumber()}">
+        </div>
+
+        <div class="mb-3">
+            <label for="hireDate" class="form-label">Hire Date</label>
+            <input type="date" class="form-control" id="hireDate" name="hireDate" th:value="${employee.getHireDate()}" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Employee</button>
+    </form>
+</main>
+
+<footer th:insert="~{index.html :: footer}"> </footer>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</html>
