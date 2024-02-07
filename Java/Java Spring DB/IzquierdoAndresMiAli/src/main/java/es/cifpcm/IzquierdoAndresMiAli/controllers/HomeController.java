@@ -7,10 +7,4 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
     @GetMapping
     public String viewHomePage() { return "inicio"; }
-
-    @GetMapping("/login")
-    public String viewLoginPage() { return "login"; }
-
-    @GetMapping("/user/create")
-    public String viewRegister() { return "usuario/create"; }
 }

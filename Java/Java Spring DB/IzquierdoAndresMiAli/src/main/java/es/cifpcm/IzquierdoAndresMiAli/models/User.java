@@ -29,9 +29,9 @@ public class User implements Serializable {
             joinColumns = @JoinColumn(name = "user_name"),
             inverseJoinColumns = @JoinColumn(name = "group_id")
     )
-    private List<Productoffer> groups;
+    private List<Group> groups;
 
-    public List<Productoffer> getGroups() {
+    public List<Group> getGroups() {
         return groups;
     }
 
