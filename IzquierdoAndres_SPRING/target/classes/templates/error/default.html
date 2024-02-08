@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error</title>
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" th:href="@{/styles/error.css}" />
+</head>
+<body>
+<div id="notfound">
+    <div class="notfound">
+        <div class="notfound-404">
+            <h3>¡Vaya!</h3>
+            <h1><span>E</span><span>R</span><span>R</span><span>O</span><span>R</span></h1>
+        </div>
+        <h2>Ha ocurrido un error inesperado.</h2>
+        <div th:if="${errorMessage}">
+            <p th:text="${errorMessage}"></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
