@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cd8d4a66-916b-4cc8-91d9-7b199d0d6254" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../Exam/IzquierdoBritoAndres/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Exam/IzquierdoBritoAndres/target/classes/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/static/styles/error.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/album_templates/create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/album_templates/details.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/album_templates/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/album_templates/update.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/artist_templates/create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/artist_templates/details.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/artist_templates/discos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/artist_templates/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/artist_templates/update.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/error/400.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/error/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/error/500.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/error/default.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../IzquierdoAndres_SPRING/target/classes/templates/index_izquierdo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/IzquierdoAndresMiAliApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/ServletInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/controllers/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/controllers/ErrorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/controllers/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/controllers/PedidoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/controllers/ProductofferController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/repositories/GroupsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/repositories/MunicipiosRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/repositories/PedidosRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/repositories/ProductofferRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/repositories/ProvinciasRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/repositories/UsersRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/services/GroupService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/services/MunicipioService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/services/PedidoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/services/ProductofferService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/services/ProvinciaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/services/StorageService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/data/services/impl/ImageService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/models/Group.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/models/Municipio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/models/Pedido.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/models/Productoffer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/models/Provincia.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/models/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/security/PasswordConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/java/es/cifpcm/IzquierdoAndresMiAli/security/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/assets/muebles.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/assets/web.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/script.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/styles/error.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/styles/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/uploads/aparador_normandia.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/uploads/camajuegodetronos.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/uploads/mesa_grande.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/uploads/mesa_juego_tronos.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/uploads/mesa_mediana_negra.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/uploads/mesa_pequeña.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/uploads/silla_normandia.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/uploads/silla_ordenador_juegos.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/static/uploads/silla_trono.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/error/400.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/error/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/error/500.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/error/default.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/fragments/cartFragment.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/fragments/municipioFragment.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/fragments/productFragment.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/inicio.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/pedidos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/producto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/usuario/create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/main/resources/templates/usuario/lista.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/src/test/java/es/cifpcm/IzquierdoAndresMiAli/IzquierdoAndresMiAliApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IzquierdoAndresMiAli/uploads" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2bImNxG8dbd85msMZPMOZkG8rAI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.IzquierdoAndresMiAliApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/2dawa/.m2/repository/com/mysql/mysql-connector-j/8.2.0/mysql-connector-j-8.2.0.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\2dawa\Desktop\DAW-DSW\Java\Java Spring DB\IzquierdoAndresMiAli\src\main\resources\templates\error" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\2dawa\Desktop\DAW-DSW\Java\Java Spring DB\IzquierdoAndresMiAli\src\main\resources\templates" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="IzquierdoAndresMiAliApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="IzquierdoAndresMiAli" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="es.cifpcm.IzquierdoAndresMiAli.IzquierdoAndresMiAliApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-20.0.2-corretto-20.0.2.1-f644763e9732-27d99999" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cd8d4a66-916b-4cc8-91d9-7b199d0d6254" name="Changes" comment="" />
+      <created>1705910933706</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705910933706</updated>
+      <workItem from="1705910937791" duration="6894000" />
+      <workItem from="1705927661276" duration="460000" />
+      <workItem from="1705997051753" duration="6224000" />
+      <workItem from="1706003954106" duration="2494000" />
+      <workItem from="1706090418501" duration="12215000" />
+      <workItem from="1706104599791" duration="35000" />
+      <workItem from="1706276064060" duration="201000" />
+      <workItem from="1706276360778" duration="1081000" />
+      <workItem from="1706517123001" duration="4388000" />
+      <workItem from="1706704552064" duration="3406000" />
+      <workItem from="1707119844082" duration="7133000" />
+      <workItem from="1707295741936" duration="6564000" />
+      <workItem from="1707313974075" duration="35000" />
+      <workItem from="1707379743868" duration="6151000" />
+      <workItem from="1707386177192" duration="18000" />
+      <workItem from="1707386312782" duration="220000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
