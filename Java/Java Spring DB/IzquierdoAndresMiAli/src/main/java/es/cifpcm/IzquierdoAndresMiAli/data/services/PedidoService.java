@@ -17,15 +17,19 @@ public class PedidoService {
         this.pedidosRepository = pedidosRepository;
     }
 
-    public Integer save(Pedido pedido) {
+    public void save(Pedido pedido) {
         Pedido bean = new Pedido();
         BeanUtils.copyProperties(pedido, bean);
-        bean = pedidosRepository.save(bean);
-        return bean.getId();
+        pedidosRepository.save(bean);
     }
 
     public List<Pedido> getAllPedidos(){
-        return pedidosRepository.findAll();   }
+        return pedidosRepository.findAll();
+    }
+
+    public List<Pedido> getPedidosByUserName(String userName){
+        return pedidosRepository.findByUsuario(userName);
+    }
 
     public void delete(Integer id) {
         pedidosRepository.deleteById(id);

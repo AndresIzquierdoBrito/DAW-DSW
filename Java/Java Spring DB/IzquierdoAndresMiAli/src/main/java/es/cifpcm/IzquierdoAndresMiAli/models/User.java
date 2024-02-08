@@ -1,8 +1,6 @@
 package es.cifpcm.IzquierdoAndresMiAli.models;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,18 +23,31 @@ public class User implements Serializable {
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
-            name = "users_groups",
-            joinColumns = @JoinColumn(name = "user_name"),
+            name = "groups_users",
+            joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "group_id")
     )
+
     private List<Group> groups;
+
+    public User() {
+
+    }
 
     public List<Group> getGroups() {
         return groups;
     }
 
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
+
     public Integer getUserId() {
         return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {

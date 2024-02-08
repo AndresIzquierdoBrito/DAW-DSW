@@ -1,0 +1,21 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <form th:fragment="municipioFragment(municipios, provinciaId, provincias, municipioId)" th:action="@{/productos}" method="get">
+        <div class="mb-3" th:if="${municipioId == null}">
+            <label for="municipio" class="form-label">Municipio</label>
+            <select id="municipio" name="municipioId" th:onchange="'this.form.submit()'" class="form-select">
+                <option value="" selected></option>
+                <option th:each="municipio : ${municipios}" th:value="${municipio.getIdMunicipio()}"
+                        th:text="${municipio.getNombre()}"></option>
+            </select>
+            <label for="provinciaId"></label><input type="text" name="provinciaId" id="provinciaId" th:value="${provinciaId}" hidden>
+        </div>
+        <div class="mb-3" th:if="${municipioId}">
+            <label for="municipio" class="form-label">Municipio</label>
+            <select id="municipio" name="municipioId" th:onchange="'this.form.submit()'" class="form-select">
+                <option th:each="municipio : ${municipios}" th:value="${municipio.getIdMunicipio()}"
+                        th:text="${municipio.getNombre()}" th:selected="${municipio.getIdMunicipio() == municipioId}"></option>
+            </select>
+            <input type="text" name="provinciaId" id="provinciaId" th:value="${provinciaId}" hidden>
+        </div>
+    </form>
+

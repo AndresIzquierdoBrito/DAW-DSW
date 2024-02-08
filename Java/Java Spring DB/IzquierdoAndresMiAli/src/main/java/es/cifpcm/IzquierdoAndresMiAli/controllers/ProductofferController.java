@@ -10,6 +10,7 @@ import es.cifpcm.IzquierdoAndresMiAli.models.Provincia;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -80,6 +81,7 @@ public class ProductofferController {
     }
 
     @GetMapping("/crear")
+    //@PreAuthorize("hasRole('administradores') or hasRole('gestores')")
     public String displayUploadForm(Model model) {
         List<Municipio> municipios = municipioService.getAllMunicipios();
         model.addAttribute("product", new Productoffer());
@@ -88,6 +90,7 @@ public class ProductofferController {
     }
 
     @PostMapping("/crear")
+    //@PreAuthorize("hasRole('administradores') or hasRole('gestores')")
     public String uploadProduct(@Validated @ModelAttribute("product") Productoffer product,
                                 @RequestParam("image") MultipartFile file,
                                 BindingResult result) {
@@ -101,7 +104,8 @@ public class ProductofferController {
         return "redirect:/productos";
     }
 
-    @PostMapping("/delete/{id}")
+    @PostMapping("/{id}/delete")
+    //@PreAuthorize("hasRole('administradores') or hasRole('gestores')")
     public String delete(@Valid @NotNull @PathVariable("id") Integer id) {
         productService.delete(id);
         return "redirect:/productos";

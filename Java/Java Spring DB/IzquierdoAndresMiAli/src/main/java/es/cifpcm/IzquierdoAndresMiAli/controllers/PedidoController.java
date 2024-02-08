@@ -1,9 +1,14 @@
 package es.cifpcm.IzquierdoAndresMiAli.controllers;
 
 import es.cifpcm.IzquierdoAndresMiAli.data.services.PedidoService;
+import es.cifpcm.IzquierdoAndresMiAli.data.services.UserService;
 import es.cifpcm.IzquierdoAndresMiAli.models.Pedido;
+import es.cifpcm.IzquierdoAndresMiAli.models.User;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -22,23 +27,34 @@ public class PedidoController {
 
     private final PedidoService pedidoService;
 
-    public PedidoController(PedidoService pedidoService) {
+    private final UserService userService;
+
+    public PedidoController(PedidoService pedidoService, UserService userService) {
         this.pedidoService = pedidoService;
+        this.userService = userService;
     }
 
     @GetMapping
-    public String getPedidios(Model model) {
-        List<Pedido> pedidos = pedidoService.getAllPedidos();
+    public String getPedidos(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !(authentication.getPrincipal() instanceof UserDetails userDetails)) {
+            return "/";
+        }
+        List<Pedido> pedidos = pedidoService.getPedidosByUserName(userDetails.getUsername());
         model.addAttribute("pedidos", pedidos);
         return "pedidos";
     }
 
     @PostMapping
     public String processPurchase() {
-        String username = "Andres";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !(authentication.getPrincipal() instanceof UserDetails userDetails)) {
+            return "/";
+        }
+        userDetails.getUsername();
         Float totalPrice = calculateTotalPrice(carrito);
 
-        Pedido pedido = new Pedido(username, totalPrice, carrito, LocalDate.now());
+        Pedido pedido = new Pedido(userDetails.getUsername(), totalPrice, carrito, LocalDate.now());
         pedidoService.save(pedido);
         carrito.clear();
 

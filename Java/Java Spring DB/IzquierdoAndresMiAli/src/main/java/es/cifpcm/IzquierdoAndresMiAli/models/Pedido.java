@@ -30,13 +30,15 @@ public class Pedido implements Serializable {
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
 
-    @ManyToMany @OnDelete(action = OnDeleteAction.CASCADE)
+
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
             name = "pedidos_productoffer",
             joinColumns = @JoinColumn(name = "id_pedido"),
             inverseJoinColumns = @JoinColumn(name = "id_productoffer")
     )
     private List<Productoffer> productos;
+
     public Pedido() {
     }
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Registro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link th:href="@{/styles/styles.css}" rel="stylesheet" />
     <link th:href="@{/assets/web.ico}" rel="icon" type="image/x-icon" />
@@ -11,17 +11,46 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
 </head>
 <body class="bg-light">
-<header th:insert="inicio.html :: nav" class="pb-5"> </header>
-
+<header th:insert="~{/inicio.html :: nav}" class="pb-5"> </header>
+<div class="d-flex align-items-center" style="height: 70vh">
 <div class="container mt-5">
-    <div class="jumbotron">
-        <h1 class="display-4 text-primary">Registro - Estamos trabajando en ello.</h1>
-        <p class="lead">Esta página aún no esta implementada y no está preparada para acceso público.</p>
-        <hr class="my-4">
-        <p>Vuelve más tarde.</p>
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title text-center mt-2">Registro</h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/register}" method="post">
+                        <div class="form-group">
+                            <label for="username">Nombre de usuario</label>
+                            <input type="text" id="username" name="username" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirmar contraseña</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
+                        </div>
+                        <div th:if="${error}" class="alert alert-danger mt-3" role="alert">
+                            <span th:text="${error}"></span>
+                        </div>
+                        <div class="form-group mt-3 text-center">
+                            <button type="submit" class="btn btn-primary btn-block">Crear cuenta</button>
+                        </div>
+                        <div class="text-center mt-3">
+                            <p>¿Ya eres usuario? <a th:href="@{/login}" class="text-primary">Accede a través de aquí</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<div class="container mt-5 py-3" th:replace="/inicio.html :: footer"></div>
+</div>
+<div class="container mt-5 py-3" th:replace="~{/inicio.html :: footer}"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

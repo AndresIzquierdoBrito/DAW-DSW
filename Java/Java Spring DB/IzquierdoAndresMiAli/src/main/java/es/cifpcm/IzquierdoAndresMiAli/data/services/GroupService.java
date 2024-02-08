@@ -17,6 +17,9 @@ public class GroupService {
         this.groupsRepository = groupsRepository;
     }
 
+    public Group findByGroupName(String groupName){
+        return groupsRepository.findByGroupName(groupName);
+    }
     public Integer save(Group group) {
         Group bean = new Group();
         BeanUtils.copyProperties(group, bean);

@@ -21,6 +21,8 @@ public class ProductofferService {
     public void save(@Valid Productoffer vO) {
         Productoffer bean = new Productoffer();
         BeanUtils.copyProperties(vO, bean);
+        productofferRepository.save(bean);
+
     }
 
     public List<Productoffer> getAllProductOffers(){
