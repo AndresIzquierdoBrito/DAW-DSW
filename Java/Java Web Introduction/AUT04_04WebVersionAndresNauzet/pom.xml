@@ -12,6 +12,7 @@
 	<artifactId>AndresNauzetFarmaciasWeb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>AndresNauzetFarmaciasWeb</name>
+	<packaging>war</packaging>
 	<description>Aplicacion web de farmacias</description>
 	<properties>
 		<java.version>17</java.version>
@@ -45,6 +46,8 @@
 	</dependencies>
 
 	<build>
+		<finalName>farmacia</finalName>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

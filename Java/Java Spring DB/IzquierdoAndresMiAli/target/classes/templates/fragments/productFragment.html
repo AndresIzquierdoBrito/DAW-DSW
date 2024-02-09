@@ -1,0 +1,28 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<div th:fragment="productFragment(products)">
+    <div class="row">
+        <div th:each="product : ${products}" class="col-md-3 mb-4">
+            <div class="card">
+                <img th:src="@{'/uploads/' + ${product.getProductPicture()}}" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${product.getProductName()}"></h5>
+                    <p class="card-text">Precio: <span th:text="${product.getProductPrice()}"></span>&euro;</p>
+                    <p class="card-text">Stock: <span th:text="${product.getProductStock()}"></span></p>
+                    <form th:action="@{/productos/addToCart}" method="post">
+                        <input type="hidden" name="productId" th:value="${product.getProductId()}">
+                        <button th:if="${product.getProductStock() > 0}" type="submit" class="btn btn-primary">Añadir al carrito</button>
+                        <button th:if="${product.getProductStock() == 0}" type="submit" class="btn btn-primary" disabled>Añadir al carrito</button>
+                    </form>
+                    <div class="mt-2" sec:authorize="hasAnyRole('administradores', 'gestores')">
+                        <a href="#" class="btn btn-dark btn-sm">Ver detalles</a>
+                        <a href="#" class="btn btn-dark btn-sm">Editar</a>
+                        <form th:action="@{'/productos/delete/' + ${product.getProductId()}}" method="post" class="mt-2">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estas seguro que quieres borrar este producto?')">Borrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
