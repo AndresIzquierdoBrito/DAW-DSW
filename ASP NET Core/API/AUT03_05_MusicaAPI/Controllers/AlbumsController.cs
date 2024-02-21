@@ -10,8 +10,9 @@ using AUT03_05_AndresIzquierdo_MusicaAPI.Models;
 
 namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+    [Produces("application/json")]
     public class AlbumsController : ControllerBase
     {
         private readonly ChinookContext _context;
@@ -76,6 +77,20 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         /// </summary>
         /// <param name="id">El ID del álbum a recuperar.</param>
         /// <returns>Información detallada sobre el álbum especificado.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Todo
+        ///     {
+        ///        "id": 1,
+        ///        "name": "Item #1",
+        ///        "isComplete": true
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Devuelve el álbum especificado por ID.</response>
+        /// <response code="400">Si hubo un error en la petición.</response>
+        /// <response code="404">Si el album especificado por ID no fue encontrado.</response>
         // GET: api/Albums/5
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -186,6 +201,19 @@ namespace AUT03_05_AndresIzquierdo_MusicaAPI.Controllers
         /// </summary>
         /// <param name="albumDTO">DTO que contiene la información del nuevo álbum.</param>
         /// <returns>Álbum creado con un código 201 (Creado) y una ubicación que apunta al nuevo recurso.</returns>
+        /// <remarks>
+        /// Petición de ejemplo para crear un álbum:
+        ///
+        ///     POST
+        ///     {
+        ///        "artistId": 0,
+        ///        "title": "T
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Devuelve el álbum especificado por ID.</response>
+        /// <response code="400">Si hubo un error en la petición.</response>
+        /// <response code="404">Si el album especificado por ID no fue encontrado.</response>
         // POST: api/Albums
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
